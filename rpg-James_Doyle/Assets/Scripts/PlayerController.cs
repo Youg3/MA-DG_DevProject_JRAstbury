@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    //stored var to compare against with which exit the player took
+    public string areaTransitionName;
+
 
     // Start is called before the first frame update
     void Start()
