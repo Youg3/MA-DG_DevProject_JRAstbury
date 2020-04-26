@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     //stored var to compare against with which exit the player took
     public string areaTransitionName;
 
+    //to restrict the player to the game area
+    private Vector3 bottomLeftLimit;
+    private Vector3 topRightLimit;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,5 +53,16 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
         }
 
+        //keep player inside map boundary
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+
+    }
+
+    public void SetBounds(Vector3 bottomLeft, Vector3 topRight)
+    {
+        //set player boundary from camera tile map
+        bottomLeftLimit = bottomLeft + new Vector3(.5f, 1f, 0f);
+        topRightLimit = topRight + new Vector3(-.5f,-1f,0f);
     }
 }
