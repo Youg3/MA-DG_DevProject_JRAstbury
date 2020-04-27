@@ -39,9 +39,12 @@ public class DialogManager : MonoBehaviour
                     {
                         //deactivates dialogue box when out of lines
                         dialogueBox.SetActive(false);
+                        PlayerController.instance.canMove = true;
                     }
                     else
                     {
+                        //check to see if it's a name
+                        CheckForName();
                         //update dialogue text box 
                         dialogueText.text = dialogueLines[currentLine];
                     }
@@ -54,15 +57,31 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    public void ShowDialog(string[] newLines)
+    public void ShowDialog(string[] newLines, bool isNPC)
     {
         dialogueLines = newLines;
 
         currentLine = 0;
 
-        dialogueText.text = dialogueLines[0];
+        CheckForName();
+
+        dialogueText.text = dialogueLines[currentLine];
         dialogueBox.SetActive(true);
 
         justStarted = true;
+
+        //activate namebox is npc
+        nameBox.SetActive(isNPC);
+
+        PlayerController.instance.canMove = false;
+    }
+
+    public void CheckForName()
+    {
+        if (dialogueLines[currentLine].StartsWith("n-"))
+        {
+            nameText.text = dialogueLines[currentLine].Replace("n-","");
+            currentLine++;
+        }
     }
 }

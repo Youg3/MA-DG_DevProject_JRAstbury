@@ -10,6 +10,8 @@ public class DialogueActivator : MonoBehaviour
 
     private bool canActivate;
 
+    public bool isNPC = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class DialogueActivator : MonoBehaviour
     {
         if (canActivate && Input.GetButtonDown("Fire1") && !DialogManager.instance.dialogueBox.activeInHierarchy)
         {
-            DialogManager.instance.ShowDialog(lines);
+            DialogManager.instance.ShowDialog(lines, isNPC);
         }
     }
 
