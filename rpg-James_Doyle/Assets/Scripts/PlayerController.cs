@@ -30,8 +30,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //destroy new player object
-            Destroy(gameObject);
+            //check to see if the other player controller object is not the player then destroy
+            if (instance != this)
+            {
+                Destroy(gameObject);
+            }
         }
 
         //don't destroy player on changing scenes

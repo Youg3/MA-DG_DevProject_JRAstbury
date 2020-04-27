@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,9 @@ public class UIFade : MonoBehaviour
     void Start()
     {
         instance = this;
+
+        //keeps canvas UI fader alive between scenes
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
