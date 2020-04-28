@@ -39,7 +39,7 @@ public class DialogManager : MonoBehaviour
                     {
                         //deactivates dialogue box when out of lines
                         dialogueBox.SetActive(false);
-                        PlayerController.instance.canMove = true;
+                        GameManager.instance.dialogActive = false;
                     }
                     else
                     {
@@ -73,7 +73,7 @@ public class DialogManager : MonoBehaviour
         //activate namebox is npc
         nameBox.SetActive(isNPC);
 
-        PlayerController.instance.canMove = false;
+        GameManager.instance.dialogActive = true;
     }
 
     public void CheckForName()
