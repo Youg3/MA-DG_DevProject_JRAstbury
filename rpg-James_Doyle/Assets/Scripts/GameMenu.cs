@@ -14,8 +14,9 @@ public class GameMenu : MonoBehaviour
     public Text[] nameText, hpText, mpText, lvlText, expText;
     public Slider[] expSlider;
     public Image[] charImage;
-    public GameObject[] charStatHolder;
 
+    [Header("Stat Menu")]
+    public GameObject[] charStatHolder;
     public GameObject[] statusButtons;
 
     public Text statusName,
@@ -30,6 +31,10 @@ public class GameMenu : MonoBehaviour
         statusExp;
 
     public Image statusImg;
+
+    [Header("Item Menu")]
+
+    public ItemButton[] itemButtons;
 
     // Start is called before the first frame update
     void Start()
@@ -159,5 +164,26 @@ public class GameMenu : MonoBehaviour
                           playerStats[selected].currentEXP).ToString();
 
         statusImg.sprite = playerStats[selected].charImage;
+    }
+
+    public void ShowItems()
+    {
+        for (int i = 0; i < itemButtons.Length; i++)
+        {
+            itemButtons[i].buttonValue = i;
+
+            if (GameManager.instance.itemsHeld[i] != "")
+            {
+                itemButtons[i].buttonImage.gameObject.SetActive(true);
+                itemButtons[i].buttonImage.sprite =
+                    GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
+                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
+            }
+            else
+            {
+                itemButtons[i].buttonImage.gameObject.SetActive(false);
+                itemButtons[i].amountText.text = "";
+            }
+        }
     }
 }
