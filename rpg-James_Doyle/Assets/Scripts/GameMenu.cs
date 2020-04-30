@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
+    public static GameMenu instance; //instance this so can call it from other scripts
+
     public GameObject theMenu;
     public GameObject[] windows;
 
@@ -36,10 +38,14 @@ public class GameMenu : MonoBehaviour
 
     public ItemButton[] itemButtons;
 
+    public string selectedItem;
+    public Item activeItem;
+    public Text itemName, itemDescription, useButtonText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -168,6 +174,8 @@ public class GameMenu : MonoBehaviour
 
     public void ShowItems()
     {
+        GameManager.instance.SortItems();
+
         for (int i = 0; i < itemButtons.Length; i++)
         {
             itemButtons[i].buttonValue = i;
@@ -185,5 +193,23 @@ public class GameMenu : MonoBehaviour
                 itemButtons[i].amountText.text = "";
             }
         }
+    }
+
+    public void SelectItem(Item newItem) //this updates the item menu buttons and texts
+    {
+        activeItem = newItem;
+
+        if (activeItem.isItem)
+        {
+            useButtonText.text = "Use";
+        }
+
+        if (activeItem.isArmour || activeItem.isWeapon)
+        {
+            useButtonText.text = "Equip";
+        }
+
+        itemName.text = activeItem.itemName;
+        itemDescription.text = activeItem.description;
     }
 }
