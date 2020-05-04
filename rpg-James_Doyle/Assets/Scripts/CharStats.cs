@@ -13,7 +13,7 @@ public class CharStats : MonoBehaviour
     public int maxLevel = 100;
     public int baseEXP = 1000;
 
-    //char stats
+    [Header("Character Stats")]
     public Sprite charImage;
     public int currentHP;
     public int maxHP = 100;
