@@ -1,33 +1,87 @@
 fileFormatVersion: 2
 guid: fb8cc55af4b7a034584793949fd90500
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: NPC_0
-    21300002: NPC_1
-    21300004: NPC_2
-    21300006: NPC_3
-    21300008: NPC_4
-    21300010: NPC_5
-    21300012: NPC_6
-    21300014: NPC_7
-    21300016: NPC_8
-    21300018: NPC_9
-    21300020: NPC_10
-    21300022: NPC_11
-    21300024: NPC_12
-    21300026: NPC_13
-    21300028: NPC_14
-    21300030: NPC_15
-    21300032: NPC_16
-    21300034: NPC_17
-    21300036: NPC_18
-    21300038: NPC_19
-    21300040: NPC_20
-    21300042: NPC_21
-    21300044: NPC_22
-    21300046: NPC_23
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: NPC_0
+  - first:
+      213: 21300002
+    second: NPC_1
+  - first:
+      213: 21300004
+    second: NPC_2
+  - first:
+      213: 21300006
+    second: NPC_3
+  - first:
+      213: 21300008
+    second: NPC_4
+  - first:
+      213: 21300010
+    second: NPC_5
+  - first:
+      213: 21300012
+    second: NPC_6
+  - first:
+      213: 21300014
+    second: NPC_7
+  - first:
+      213: 21300016
+    second: NPC_8
+  - first:
+      213: 21300018
+    second: NPC_9
+  - first:
+      213: 21300020
+    second: NPC_10
+  - first:
+      213: 21300022
+    second: NPC_11
+  - first:
+      213: 21300024
+    second: NPC_12
+  - first:
+      213: 21300026
+    second: NPC_13
+  - first:
+      213: 21300028
+    second: NPC_14
+  - first:
+      213: 21300030
+    second: NPC_15
+  - first:
+      213: 21300032
+    second: NPC_16
+  - first:
+      213: 21300034
+    second: NPC_17
+  - first:
+      213: 21300036
+    second: NPC_18
+  - first:
+      213: 21300038
+    second: NPC_19
+  - first:
+      213: 21300040
+    second: NPC_20
+  - first:
+      213: 21300042
+    second: NPC_21
+  - first:
+      213: 21300044
+    second: NPC_22
+  - first:
+      213: 21300046
+    second: NPC_23
+  - first:
+      213: 8631269386824879595
+    second: NPC Characters_0
+  - first:
+      213: 7269821611972313979
+    second: Shopkeeper
   externalObjects: {}
-  serializedVersion: 6
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -123,6 +177,49 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ffed8c54b9c6dff4d9b07e21ee13db9b
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC Characters_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 14
+        width: 21
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a50cb6b75192df4e8da9a86d9e2371d
+      internalID: 8631269386824879595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shopkeeper
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 51
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92188308f7362204fb69ef0f037909a3
+      internalID: 7269821611972313979
       vertices: []
       indices: 
       edges: []
@@ -131,11 +228,15 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 8774c89883c6c4b4b9137e27da15fa98
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

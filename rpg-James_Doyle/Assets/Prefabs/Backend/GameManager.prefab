@@ -112,6 +112,61 @@ MonoBehaviour:
   - {fileID: 6693525377907349570}
   - {fileID: 6693525378372652063}
   - {fileID: 6693525379503530773}
+  gameMenuOpen: 0
+  dialogActive: 0
+  fadingBetweenAreas: 0
+  itemsHeld:
+  - 
+  - 
+  - 
+  - 
+  - HP Potion
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Iron Sword
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Leather Armour
+  - 
+  - 
+  - 
+  - 
+  - 
+  - MP Potion
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  numberOfItems: 000000000000000000000000000000000500000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  referenceItems:
+  - {fileID: 4100437425159662506, guid: 3c680879a4c9ae547aef338a4f7bb7db, type: 3}
+  - {fileID: 6306963520267871550, guid: fe566a740025ad44e84fa8287dea4173, type: 3}
+  - {fileID: 1840137033631224600, guid: 164ae451c64fb3a41a53c6640dc928eb, type: 3}
+  - {fileID: 6695744740053012865, guid: 6482041e27b7c0a42b54f4cb181606af, type: 3}
+  - {fileID: 7840997641840679741, guid: d7945e92b485f1f40b6d3afaa992a5fb, type: 3}
+  - {fileID: 4298232936277965726, guid: c4a7d834d394e9f4dadebc6ca1ba1526, type: 3}
+  - {fileID: 4298232936277965726, guid: 6d0c092237c70a246bf7842f3f71a828, type: 3}
+  currentGold: 100
+  shopActive: 0
 --- !u!1 &6693525378372652062
 GameObject:
   m_ObjectHideFlags: 0
