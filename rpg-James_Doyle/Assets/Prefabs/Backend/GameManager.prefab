@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6693525378151410885}
   - component: {fileID: 6693525378151410884}
+  - component: {fileID: -2914896347810886286}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -167,6 +168,23 @@ MonoBehaviour:
   - {fileID: 4298232936277965726, guid: 6d0c092237c70a246bf7842f3f71a828, type: 3}
   currentGold: 100
   shopActive: 0
+--- !u!114 &-2914896347810886286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693525378151410883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e665ccc6082704b96d42dc73cb6d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questMarkerNames:
+  - Save Them
+  - Quest Test
+  - Talk
+  questMarkersComplete: 
 --- !u!1 &6693525378372652062
 GameObject:
   m_ObjectHideFlags: 0

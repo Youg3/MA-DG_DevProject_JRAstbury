@@ -18,7 +18,10 @@ public class DialogManager : MonoBehaviour
 
     public static DialogManager instance;
 
-    // Start is called before the first frame update
+    private string questToMark;
+    private bool markQuestComplete;
+    private bool shouldMarkQuest;
+
     void Start()
     {
         instance = this;
@@ -40,6 +43,20 @@ public class DialogManager : MonoBehaviour
                         //deactivates dialogue box when out of lines
                         dialogueBox.SetActive(false);
                         GameManager.instance.dialogActive = false;
+                        //check to see if we should mark a quest
+                        if (shouldMarkQuest)
+                        {
+                            shouldMarkQuest = false;
+                            if (markQuestComplete)
+                            {
+                                QuestManager.instance.MarkQuestComplete(questToMark);
+                            }
+                            else
+                            {
+                                QuestManager.instance.MarkQuestIncomplete(questToMark);
+                            }
+                        }
+
                     }
                     else
                     {
@@ -83,5 +100,12 @@ public class DialogManager : MonoBehaviour
             nameText.text = dialogueLines[currentLine].Replace("n-","");
             currentLine++;
         }
+    }
+    public void ShouldActivateQuestAtEnd(string questName, bool markComplete)
+    {
+        questToMark = questName;
+        markQuestComplete = markComplete;
+
+        shouldMarkQuest = true;
     }
 }

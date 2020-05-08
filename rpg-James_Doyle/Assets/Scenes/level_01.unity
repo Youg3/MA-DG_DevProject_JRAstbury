@@ -278,6 +278,9 @@ MonoBehaviour:
   - Don't worry
   - I'll save them
   isNPC: 1
+  shouldActivateQuest: 1
+  questToMark: Save Them
+  markComplete: 1
 --- !u!1001 &69610812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8449,6 +8452,9 @@ MonoBehaviour:
   lines:
   - Welcome to town!
   isNPC: 0
+  shouldActivateQuest: 0
+  questToMark: 
+  markComplete: 0
 --- !u!61 &1446992532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8523,6 +8529,39 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.83
+--- !u!114 &1990167295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990167289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4916b1d03391ea84bb6a555ca5f186dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 1990167289}
+  questToCheck: Quest Test
+  activeIfComplete: 0
+--- !u!114 &1990167296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990167289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00906b2a3eae3443b2a8129f0339985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - You found some Iron Armour!
+  isNPC: 1
+  shouldActivateQuest: 1
+  questToMark: Quest Test
+  markComplete: 1
 --- !u!1001 &2063808336
 PrefabInstance:
   m_ObjectHideFlags: 0
