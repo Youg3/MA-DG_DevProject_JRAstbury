@@ -29,7 +29,11 @@ public class DialogueActivator : MonoBehaviour
         if (canActivate && Input.GetButtonDown("Fire1") && !DialogManager.instance.dialogueBox.activeInHierarchy)
         {
             DialogManager.instance.ShowDialog(lines, isNPC);
-            DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);
+
+            if (shouldActivateQuest)
+            {
+                DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);
+            }
         }
     }
 

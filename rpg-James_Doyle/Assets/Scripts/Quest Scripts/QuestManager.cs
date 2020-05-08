@@ -24,7 +24,7 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log(CheckIfComplete("Quest Test"));
             MarkQuestComplete("Quest Test");
-            MarkQuestIncomplete("Fight Demon");
+            MarkQuestIncomplete("Talk");
         }
     }
 

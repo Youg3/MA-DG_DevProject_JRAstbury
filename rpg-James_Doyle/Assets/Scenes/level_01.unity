@@ -279,7 +279,7 @@ MonoBehaviour:
   - I'll save them
   isNPC: 1
   shouldActivateQuest: 1
-  questToMark: Save Them
+  questToMark: Talk
   markComplete: 1
 --- !u!1001 &69610812
 PrefabInstance:
@@ -8562,6 +8562,22 @@ MonoBehaviour:
   shouldActivateQuest: 1
   questToMark: Quest Test
   markComplete: 1
+--- !u!114 &1990167297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990167289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6864f1b107ae944abfb355dd6d39b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questToMark: Quest Test
+  markComplete: 1
+  markOnEnter: 0
+  deactivateOnMark: 0
 --- !u!1001 &2063808336
 PrefabInstance:
   m_ObjectHideFlags: 0

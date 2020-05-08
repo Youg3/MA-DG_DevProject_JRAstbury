@@ -20,7 +20,7 @@ public class DialogManager : MonoBehaviour
 
     private string questToMark;
     private bool markQuestComplete;
-    private bool shouldMarkQuest;
+    private bool shouldMarkQuest = false;
 
     void Start()
     {
