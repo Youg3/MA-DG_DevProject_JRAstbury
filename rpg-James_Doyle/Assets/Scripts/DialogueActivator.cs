@@ -16,6 +16,7 @@ public class DialogueActivator : MonoBehaviour
     public bool shouldActivateQuest;
     public string questToMark;
     public bool markComplete;
+    //public bool markIncomplete;
 
     // Start is called before the first frame update
     void Start()

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestMarker : MonoBehaviour
+public class OverworldPickupMarker : MonoBehaviour
 {
     public string questToMark;
     public bool markComplete;
-    //public bool markIncomplete;
     public bool markOnEnter;
     private bool canMark;
 
@@ -24,23 +23,19 @@ public class QuestMarker : MonoBehaviour
         if (canMark && Input.GetButtonDown("Fire1"))
         {
             canMark = false;
-            MarkQuest();
+            MarkPickup();
         }
     }
 
-    public void MarkQuest()
+    public void MarkPickup()
     {
         if (markComplete)
         {
-            QuestManager.instance.MarkQuestComplete(questToMark);
+            OverworldPickupManager.instance.MarkPickupComplete(questToMark);
         }
-        /*else if (markIncomplete)
-        {
-            QuestManager.instance.MarkQuestIncomplete(questToMark);
-        }*/
         else
         {
-            QuestManager.instance.MarkQuestIncomplete(questToMark);
+            OverworldPickupManager.instance.MarkPickupIncomplete(questToMark);
         }
 
         gameObject.SetActive(!deactivateOnMark);
@@ -52,7 +47,7 @@ public class QuestMarker : MonoBehaviour
         {
             if (markOnEnter)
             {
-                MarkQuest();
+                MarkPickup();
             }
             else
             {

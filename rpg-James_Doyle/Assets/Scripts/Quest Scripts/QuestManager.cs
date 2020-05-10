@@ -22,7 +22,13 @@ public class QuestManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log(CheckIfComplete("Quest Test"));
+            Debug.Log(CheckIfComplete("Talk"));
+            MarkQuestComplete("Talk");
+            MarkQuestIncomplete("Quest Test");
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log(CheckIfComplete("Talk"));
             MarkQuestComplete("Quest Test");
             MarkQuestIncomplete("Talk");
         }

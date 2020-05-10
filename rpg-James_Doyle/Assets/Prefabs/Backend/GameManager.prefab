@@ -184,6 +184,7 @@ MonoBehaviour:
   - Save Them
   - Quest Test
   - Talk
+  - pickup_IS
   questMarkersComplete: 
 --- !u!1 &6693525378372652062
 GameObject:

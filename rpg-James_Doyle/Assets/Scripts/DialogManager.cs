@@ -22,10 +22,15 @@ public class DialogManager : MonoBehaviour
     private bool markQuestComplete;
     private bool shouldMarkQuest = false;
 
+    /*private string pickupToMark;
+    private bool markPickupComplete;
+    private bool markPickupIncomplete;
+    private bool shouldMarkPickup = false;*/
+
     void Start()
     {
         instance = this;
-        //dialogueText.text = dialogueLines[currentLine];
+        dialogueText.text = dialogueLines[currentLine];
     }
 
     // Update is called once per frame
@@ -56,6 +61,19 @@ public class DialogManager : MonoBehaviour
                                 QuestManager.instance.MarkQuestIncomplete(questToMark);
                             }
                         }
+
+                        /*if (shouldMarkPickup) //handles unique items
+                        {
+                            shouldMarkPickup = false;
+                            if (markPickupComplete)
+                            {
+                                OverworldPickupManager.instance.MarkPickupComplete(pickupToMark);
+                            }
+                            else if(markPickupIncomplete)
+                            {
+                                OverworldPickupManager.instance.MarkPickupIncomplete(pickupToMark);
+                            }
+                        }*/
 
                     }
                     else
@@ -105,7 +123,16 @@ public class DialogManager : MonoBehaviour
     {
         questToMark = questName;
         markQuestComplete = markComplete;
+        //markPickupIncomplete = markIncomplete;
 
         shouldMarkQuest = true;
     }
+    /*public void ShouldActivatePickupAtEnd(string pickupName, bool markComplete, bool markIncomplete)
+    {
+        pickupToMark = pickupName;
+        markPickupComplete = markComplete;
+        //markPickupIncomplete = markIncomplete;
+
+        shouldMarkPickup = true;
+    }*/
 }

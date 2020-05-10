@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestObjActivator : MonoBehaviour
+public class OverworldObjActivator : MonoBehaviour
 {
     public GameObject objectToActivate;
-    public string questToCheck;
+    public string pickupToCheck;
     public bool activeIfComplete;
 
     private bool initialCheckDone;
@@ -26,10 +26,15 @@ public class QuestObjActivator : MonoBehaviour
 
     public void CheckCompletion()
     {
-        //Debug.Log("QuestCheck");
-        if (QuestManager.instance.CheckIfComplete(questToCheck))
+        //Debug.Log("Pickup Check");
+        //Debug.Log(pickupToCheck);
+
+        bool test = OverworldPickupManager.instance.CheckIfComplete(pickupToCheck);
+        //Debug.Log(test);
+        if (test)
         {
             objectToActivate.SetActive(activeIfComplete);
+            //Destroy(this);
         }
     }
 }

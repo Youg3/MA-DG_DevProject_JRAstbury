@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
+    public string[] lines; //any text lines for picking up item
 
     private bool canPickup;
 
+    public bool hasText = false; //to activate dialogue box if item has text
+
+    /*[Header("Overworld Pickup Settings")]
+    public bool shouldActivatePickup;
+    public string pickupToMark;
+    public bool markComplete;
+    public bool markIncomplete;*/
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,13 @@ public class PickupItem : MonoBehaviour
         {
             GameManager.instance.AddItem(GetComponent<Item>().itemName);
             Destroy(gameObject); //remove object from the world once picked up
+
+            if (hasText)
+            {
+                DialogManager.instance.ShowDialog(lines, hasText); //unsure about this...
+                //DialogManager.instance.ShouldActivateQuestAtEnd(pickupToMark, markComplete, markIncomplete);
+            }
+
         }
     }
 
