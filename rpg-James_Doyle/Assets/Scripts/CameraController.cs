@@ -17,6 +17,10 @@ public class CameraController : MonoBehaviour
     private float halfHeight;
     private float halfWidth;
 
+    //music loader?/Controller
+    public int musicToPlay;
+    private bool musicStarted;
+
     void Start()
     {
         //gets the transform positions of the player
@@ -43,5 +47,12 @@ public class CameraController : MonoBehaviour
         //keep camera inside map boundary
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), 
             Mathf.Clamp(transform.position.y,bottomLeftLimit.y,topRightLimit.y), transform.position.z);
+
+        if (!musicStarted)
+        {
+            musicStarted = true;
+            AudioManager.instance.PlayBGM(musicToPlay);
+        }
+
     }
 }
