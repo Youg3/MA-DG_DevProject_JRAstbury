@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro.SpriteAssetUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
@@ -47,6 +48,8 @@ public class GameMenu : MonoBehaviour
     public Text[] itemCharChoiceNames;
 
     public Text goldText;
+
+    public string mainMenuName;
 
     // Start is called before the first frame update
     void Start()
@@ -289,4 +292,16 @@ public class GameMenu : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(8);
     }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(mainMenuName);
+
+        //destroy other active objects in scene
+        Destroy(GameManager.instance.gameObject);
+        Destroy(PlayerController.instance.gameObject);
+        Destroy(AudioManager.instance.gameObject);
+        Destroy(gameObject);
+    }
+
 }

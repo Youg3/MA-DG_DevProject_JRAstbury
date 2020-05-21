@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     {
         //gets the transform positions of the player
         //target = PlayerController.instance.transform;
-        target = FindObjectOfType<PlayerController>().transform; //searches through scene objects for player controller script if it's present
+        //target = FindObjectOfType<PlayerController>().transform; //searches through scene objects for player controller script if it's present
 
         halfHeight = Camera.main.orthographicSize;
         halfWidth = halfHeight * Camera.main.aspect;
@@ -41,6 +41,8 @@ public class CameraController : MonoBehaviour
     //LateUpdate calls AFTER other Update scripts
     void LateUpdate()
     {
+        target = FindObjectOfType<PlayerController>().transform; //searches through scene objects for player controller script if it's present
+
         //update the camera every frame
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
@@ -53,6 +55,7 @@ public class CameraController : MonoBehaviour
             musicStarted = true;
             AudioManager.instance.PlayBGM(musicToPlay);
         }
+        
 
     }
 }
