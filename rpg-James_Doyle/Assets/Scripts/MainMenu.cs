@@ -32,16 +32,19 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
+        AudioManager.instance.PlaySFX(4);
         SceneManager.LoadScene(loadGameScene);
     }
 
     public void NewGame()
     {
+        AudioManager.instance.PlaySFX(4);
         SceneManager.LoadScene(newGameScene);
     }
 
     public void Exit()
     {
+        AudioManager.instance.PlaySFX(4);
         Application.Quit();//unity instructions to close game.  cannot test this until build
     }
 }
