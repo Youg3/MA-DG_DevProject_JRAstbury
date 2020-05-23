@@ -51,6 +51,8 @@ public class GameMenu : MonoBehaviour
 
     public string mainMenuName;
 
+    public bool battleActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,22 +64,25 @@ public class GameMenu : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire2"))
         {
-            //right click to open the menu
-            if (theMenu.activeInHierarchy)
+            if (!battleActive)
             {
-                //theMenu.SetActive(false);
-                //GameManager.instance.gameMenuOpen = false;
+                //right click to open the menu
+                if (theMenu.activeInHierarchy)
+                {
+                    //theMenu.SetActive(false);
+                    //GameManager.instance.gameMenuOpen = false;
 
-                CloseMenu();
-            }
-            else
-            {
-                theMenu.SetActive(true);
-                UpdateMainStats();
-                GameManager.instance.gameMenuOpen = true;
-            }
+                    CloseMenu();
+                }
+                else
+                {
+                    theMenu.SetActive(true);
+                    UpdateMainStats();
+                    GameManager.instance.gameMenuOpen = true;
+                }
 
-            AudioManager.instance.PlaySFX(5);
+                AudioManager.instance.PlaySFX(5);
+            }
         }
     }
 

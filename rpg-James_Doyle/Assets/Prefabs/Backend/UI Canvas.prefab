@@ -8239,7 +8239,7 @@ GameObject:
   - component: {fileID: 1280404035}
   - component: {fileID: 1280404034}
   m_Layer: 5
-  m_Name: HP
+  m_Name: HP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8942,7 +8942,7 @@ GameObject:
   - component: {fileID: 1480463410}
   - component: {fileID: 1480463409}
   m_Layer: 5
-  m_Name: HP
+  m_Name: HP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9959,7 +9959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: 98}
+  m_AnchoredPosition: {x: 117, y: 105}
   m_SizeDelta: {x: 262.5, y: 262.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1586116105
@@ -10546,7 +10546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: 98}
+  m_AnchoredPosition: {x: 117, y: 116}
   m_SizeDelta: {x: 262.5, y: 262.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1702273783
@@ -10577,8 +10577,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 7456334905099763947, guid: 3eebea435ec811f4fa63935d83786122,
-    type: 3}
+  m_Sprite: {fileID: 21300002, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10776,7 +10775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: 98}
+  m_AnchoredPosition: {x: 117, y: 100}
   m_SizeDelta: {x: 262.5, y: 262.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1733564705
@@ -11543,7 +11542,7 @@ GameObject:
   - component: {fileID: 1862489446}
   - component: {fileID: 1862489445}
   m_Layer: 5
-  m_Name: HP
+  m_Name: HP3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49808,7 +49807,7 @@ MonoBehaviour:
   - {fileID: 1198084840}
   - {fileID: 372897669}
   hpText:
-  - {fileID: 1862489445}
+  - {fileID: 1480463409}
   - {fileID: 1280404034}
   - {fileID: 1862489445}
   mpText:
