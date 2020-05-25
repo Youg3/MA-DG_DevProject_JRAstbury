@@ -18,6 +18,12 @@ public class BattleManager : MonoBehaviour
 
     public List<BattleChar> activeBattleChar = new List<BattleChar>(); //to hold all active battle char
 
+    //turn vars
+    public int currentTurn;
+    public bool turnWaiting; //used waiting for turn to end
+
+    public GameObject uiButtonsHolder;
+
     void Start()
     {
         instance = this;
@@ -31,6 +37,30 @@ public class BattleManager : MonoBehaviour
         {
             BattleStart(new string[]{"Eyeball","Skeleton", "Goblin Raider", "Eyeball", "Skeleton", "Goblin Raider" });
         }
+
+        //handle what happens for turn
+        if (activeBattle)
+        {
+            if (turnWaiting)
+            {
+                //waiting for player? display player input buttons
+                if (activeBattleChar[currentTurn].isPlayer)
+                {
+                    uiButtonsHolder.SetActive(true);
+                }
+                else
+                {
+                    uiButtonsHolder.SetActive(false);
+                    //enemy turn...
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            NextTurn();
+        }
+
     }
 
     public void BattleStart(string[] enemiesToSpawn)
@@ -98,6 +128,74 @@ public class BattleManager : MonoBehaviour
                     }
                 }
             }
+
+            turnWaiting = true;
+            currentTurn = Random.Range(0,activeBattleChar.Count); //starting a new battle randomizes who goes first.
         }
+    }
+
+    public void NextTurn()
+    {
+        currentTurn++;
+
+        if (currentTurn >= activeBattleChar.Count)
+        {
+            currentTurn = 0;
+        }
+
+        turnWaiting = true;
+
+        UpdateBattle();
+    }
+
+    public void UpdateBattle()
+    {
+        //update all info in battle
+        //check enemies/players dead?
+        bool allEnemiesDead = true;
+        bool allPlayersDead = true; //these start true
+
+        for (int i = 0; i < activeBattleChar.Count; i++)
+        {
+            if (activeBattleChar[i].currentHp < 0)
+            {
+                activeBattleChar[i].currentHp = 0;  //makes sure health can't show below 0
+            }
+
+            if (activeBattleChar[i].currentHp == 0)
+            {
+                //is the battler dead?
+            }
+            else
+            {
+                if (activeBattleChar[i].isPlayer)
+                {
+                    allPlayersDead = false;
+                }
+                else
+                {
+                    allEnemiesDead = false;
+                }
+            }
+        }
+
+        if(allEnemiesDead || allPlayersDead)
+        {
+            //we are at end of the battle
+            if (allEnemiesDead)
+            {
+                //victory
+            }
+            else
+            { 
+                //lose
+            }
+
+            //set everything to false
+            battleScene.SetActive(false);
+            GameManager.instance.battleActive = false;
+            activeBattle = false;
+        }
+
     }
 }
