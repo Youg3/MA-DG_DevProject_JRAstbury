@@ -52,6 +52,7 @@ public class BattleManager : MonoBehaviour
                 {
                     uiButtonsHolder.SetActive(false);
                     //enemy turn...
+                    StartCoroutine(EnemyMoveCo());//this will delay the enemy attacks so they don't activate in less than a second
                 }
             }
         }
@@ -197,5 +198,31 @@ public class BattleManager : MonoBehaviour
             activeBattle = false;
         }
 
+    }
+
+    public IEnumerator EnemyMoveCo()
+    {
+        //uses a co routine (something that can happen outside of the normal running order) so the rest of the game can continue running
+        turnWaiting = false;
+        yield return new WaitForSeconds(1f);//wait for this amount of time
+        EnemyAttack();
+        yield return new WaitForSeconds(1f);
+        NextTurn();
+    }
+    public void EnemyAttack()
+    {
+        //deals with all AI decision
+        List<int> players = new List<int>();
+        for (int i = 0; i < activeBattleChar.Count; i++)
+        {
+            if (activeBattleChar[i].isPlayer && activeBattleChar[i].currentHp > 0)
+            {
+                players.Add(i); //finds the player characters that can be attacked.
+            }
+        }
+
+        int selectedTarget = players[Random.Range(0, players.Count)];  //selects a random target
+
+        activeBattleChar[selectedTarget].currentHp -= 30;
     }
 }
