@@ -13734,6 +13734,27 @@ MonoBehaviour:
   currentTurn: 0
   turnWaiting: 0
   uiButtonsHolder: {fileID: 1745939531}
+  movesList:
+  - moveName: Slash
+    movePower: 40
+    moveCost: 0
+    theEffect: {fileID: 2443460319281950425, guid: a3d9747fa5abfd742be68daf1fa12397,
+      type: 3}
+  - moveName: Fire
+    movePower: 50
+    moveCost: 5
+    theEffect: {fileID: 8418957589908047495, guid: 05c7e2c35910a5c469ef64f192550ffb,
+      type: 3}
+  - moveName: Ice
+    movePower: 65
+    moveCost: 5
+    theEffect: {fileID: 3559309442383116141, guid: a104997ea3419ff48b3308332bceab73,
+      type: 3}
+  - moveName: Plasma
+    movePower: 85
+    moveCost: 10
+    theEffect: {fileID: 7634271325496742694, guid: 1f9711a31023a5c4db6bf92ec6317ad5,
+      type: 3}
 --- !u!4 &1867970642
 Transform:
   m_ObjectHideFlags: 0
