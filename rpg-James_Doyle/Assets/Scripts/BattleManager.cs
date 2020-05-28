@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class BattleManager : MonoBehaviour
 
     public BattleMove[] movesList;
 
+    public GameObject enemyAttackEffect;
+    public DamageNumber theDamageNumber;
+
+    [Header("UI Values")]
+    public Text[] playerName, playerHP, playerMP;
+
     void Start()
     {
         instance = this;
@@ -37,7 +44,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            BattleStart(new string[]{"Eyeball","Skeleton", "Goblin Raider", "Eyeball", "Skeleton", "Goblin Raider" });
+            BattleStart(new string[]{"Eyeball","Skeleton", "Goblin Raider"});
         }
 
         //handle what happens for turn
@@ -134,6 +141,7 @@ public class BattleManager : MonoBehaviour
 
             turnWaiting = true;
             currentTurn = Random.Range(0,activeBattleChar.Count); //starting a new battle randomizes who goes first.
+            UpdateUIStats();
         }
     }
 
@@ -149,6 +157,7 @@ public class BattleManager : MonoBehaviour
         turnWaiting = true;
 
         UpdateBattle();
+        UpdateUIStats();
     }
 
     public void UpdateBattle()
@@ -199,6 +208,18 @@ public class BattleManager : MonoBehaviour
             GameManager.instance.battleActive = false;
             activeBattle = false;
         }
+        else
+        {
+            //checks if char has 0 health to then move the current turn counter forward/skips dead chars
+            while (activeBattleChar[currentTurn].currentHp == 0)
+            {
+                currentTurn++;
+                if (currentTurn >= activeBattleChar.Count)
+                {
+                    currentTurn = 0;
+                }
+            }
+        }
 
     }
 
@@ -229,13 +250,93 @@ public class BattleManager : MonoBehaviour
 
         //chose which move to make
         int selectAttack = Random.Range(0, activeBattleChar[currentTurn].movesAvailable.Length);
+        int movePower = 0;
         for (int i = 0; i < movesList.Length; i++)
         {
             if (movesList[i].moveName == activeBattleChar[currentTurn].movesAvailable[selectAttack])
             {
                 Instantiate(movesList[i].theEffect, activeBattleChar[selectedTarget].transform.position,
                     activeBattleChar[selectedTarget].transform.rotation); //shows effect on screen
+                movePower = movesList[i].movePower; //set move power when move is found
             }
         }
+
+        //load in the particle effect to visually show who is attacking/who's turn it is
+        Instantiate(enemyAttackEffect, activeBattleChar[currentTurn].transform.position,
+            activeBattleChar[currentTurn].transform.rotation);
+
+        DealDamage(selectedTarget,movePower);
+    }
+
+    public void DealDamage(int target, int movePower)
+    {
+        float attackPwr = activeBattleChar[currentTurn].strength + activeBattleChar[currentTurn].wpnPower; //attacker stat
+        float defPwr = activeBattleChar[target].defence + activeBattleChar[target].armPower; //defender stat
+
+        float damageCalc = (attackPwr / defPwr) * movePower * Random.Range(.9f, 1.1f); //actual damage to be dealt to target
+
+        int damageToGive = Mathf.RoundToInt(damageCalc);//rounded to int so no decinmals points.
+        Debug.Log(activeBattleChar[currentTurn].charName + " is dealing " + damageCalc + "(" + damageToGive +
+                     ") damage to " + activeBattleChar[target].charName);
+
+        //apply to defender
+        activeBattleChar[target].currentHp -= damageToGive; //apply to HP
+        //spawn damage number
+        Instantiate(theDamageNumber, activeBattleChar[target].transform.position, activeBattleChar[target].transform.rotation).SetDamage(damageToGive);
+
+        UpdateUIStats();
+
+    }
+
+    public void UpdateUIStats()
+    {
+        for (int i = 0; i < playerName.Length; i++)
+        {
+            if (activeBattleChar.Count > i)
+            {
+                if (activeBattleChar[i].isPlayer)
+                {
+                    BattleChar playerData = activeBattleChar[i];
+                    playerName[i].gameObject.SetActive(true);
+
+                    playerName[i].text = playerData.charName;
+                    playerHP[i].text = Mathf.Clamp(playerData.currentHp, 0, int.MaxValue) + "/" + playerData.maxHp;
+                    playerMP[i].text = Mathf.Clamp(playerData.currentMp, 0, int.MaxValue) + "/" + playerData.maxMp;
+
+                }
+                else
+                {
+                    playerName[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                playerName[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void PlayerAttack(string moveName)
+    {
+        int selectedTarget = 2;
+
+        int movePower = 0;
+        for (int i = 0; i < movesList.Length; i++)
+        {
+            if (movesList[i].moveName == moveName)
+            {
+                Instantiate(movesList[i].theEffect, activeBattleChar[selectedTarget].transform.position,
+                    activeBattleChar[selectedTarget].transform.rotation); //shows effect on screen
+                movePower = movesList[i].movePower; //set move power when move is found
+            }
+        }
+        //load in the particle effect to visually show who is attacking/who's turn it is
+        Instantiate(enemyAttackEffect, activeBattleChar[currentTurn].transform.position,
+            activeBattleChar[currentTurn].transform.rotation);
+
+        DealDamage(selectedTarget,movePower);
+
+        uiButtonsHolder.SetActive(false); //sets buttons off to prevent double clicking
+        NextTurn();
     }
 }
