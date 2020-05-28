@@ -33,6 +33,12 @@ public class BattleManager : MonoBehaviour
     [Header("UI Values")]
     public Text[] playerName, playerHP, playerMP;
 
+    public GameObject targetMenu;
+    public BattleTargetButton[] targetButtons;
+
+    public GameObject magicMenu;
+    public BattleMagicSelect[] magicButtons;
+
     void Start()
     {
         instance = this;
@@ -316,9 +322,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void PlayerAttack(string moveName)
+    public void PlayerAttack(string moveName, int selectedTarget)
     {
-        int selectedTarget = 2;
+        //int selectedTarget = 2;
 
         int movePower = 0;
         for (int i = 0; i < movesList.Length; i++)
@@ -337,6 +343,69 @@ public class BattleManager : MonoBehaviour
         DealDamage(selectedTarget,movePower);
 
         uiButtonsHolder.SetActive(false); //sets buttons off to prevent double clicking
+        targetMenu.SetActive(false); //closes the target buttons
         NextTurn();
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        targetMenu.SetActive(true);
+
+        //loop through and assign buttons to current enemies
+        List<int> enemies = new List<int>();
+
+        for (int i = 0; i < activeBattleChar.Count; i++)
+        {
+            if (!activeBattleChar[i].isPlayer)
+            {
+                enemies.Add(i);
+            }
+        }
+
+        for (int i = 0; i < targetButtons.Length; i++)
+        {
+            if (enemies.Count > i)
+            {
+                targetButtons[i].gameObject.SetActive(true);
+
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeBattlerTarget = enemies[i];
+                targetButtons[i].targetName.text = activeBattleChar[enemies[i]].charName;
+            }
+            else
+            {
+                targetButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OpenMagicMenu()
+    {
+        magicMenu.SetActive(true);
+
+        for (int i = 0; i < magicButtons.Length; i++)
+        {
+            if (activeBattleChar[currentTurn].movesAvailable.Length > i)
+            {
+                magicButtons[i].gameObject.SetActive(true); //sets a button active for every available move
+
+                magicButtons[i].spellName = activeBattleChar[currentTurn].movesAvailable[i]; //sets the name of the spell from the moves available to the current char
+                magicButtons[i].nameText.text = magicButtons[i].spellName; //prints name
+
+                for (int j = 0; j < movesList.Length; j++)
+                {
+                    if (movesList[j].moveName == magicButtons[i].spellName) //checks that the two arrays are currently positioned at the same data set via it's name
+                    {
+                        magicButtons[i].spellCost = movesList[j].moveCost; //sets the cost 
+                        magicButtons[i].costText.text = magicButtons[i].spellCost.ToString(); //prints the cost
+                    }
+                }
+
+            }
+            else
+            {
+                magicButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
 }
