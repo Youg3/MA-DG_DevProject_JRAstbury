@@ -37,6 +37,9 @@ public class BattleMagicSelect : MonoBehaviour
         else if(mpCheck < 0 || currentMpAmount == 0)
         {
             //notification when not enough MP
+            BattleManager.instance.battleNotice.theText.text = "Not Enough MP";
+            BattleManager.instance.battleNotice.Activate();
+            //turns magic menu off
             BattleManager.instance.magicMenu.SetActive(false);
         }
     }

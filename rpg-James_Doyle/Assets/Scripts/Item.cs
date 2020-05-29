@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [Header("Item Type")]
-    public bool isItem;
+    [Header("Item Type")] public bool isItem;
     public bool isWeapon;
     public bool isArmour;
-    [Header("Basic Details")]
-    public string itemName;
+    [Header("Basic Details")] public string itemName;
     public string description;
     public int value;
     public Sprite itemSprite;
@@ -18,23 +16,25 @@ public class Item : MonoBehaviour
     [Header("Item Details")]
     //item stats
     public int amountToChange;
+
     public bool effectHP, effectMP, effectStr, effectDef;
 
     [Header("Weapon/Armour Details")]
     //weapon and armour strengths
     public int weaponStr;
-    public int armourStr; 
+
+    public int armourStr;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Use(int charToUseOn)
@@ -67,6 +67,7 @@ public class Item : MonoBehaviour
             {
                 selectedChar.strength += amountToChange;
             }
+            //can put in additional potion types here, str, def, etc...
         }
 
         if (isWeapon)
@@ -98,4 +99,36 @@ public class Item : MonoBehaviour
         GameManager.instance.RemoveItem(itemName); //remove from inventory
 
     }
+
+    public void UseItemBattle(int charToUseOn)
+    {
+        BattleChar selectedBattleChar = BattleManager.instance.activeBattleChar[charToUseOn];
+
+        if (isItem)
+        {
+            if (effectHP) //use of potion, add amount to change to Char
+            {
+                selectedBattleChar.currentHp += amountToChange;
+
+                if (selectedBattleChar.currentHp > selectedBattleChar.maxHp)
+                {
+                    selectedBattleChar.currentHp = selectedBattleChar.maxHp;
+                }
+            }
+            if (effectMP)
+            {
+                selectedBattleChar.currentMp += amountToChange;
+
+                if (selectedBattleChar.currentMp > selectedBattleChar.maxMp)
+                {
+                    selectedBattleChar.currentMp = selectedBattleChar.maxMp;
+                }
+            }
+        }
+
+        //need to implement armour and weapon item stuff here
+
+        GameManager.instance.RemoveItem(itemName); //remove from inventory
+    }
 }
+

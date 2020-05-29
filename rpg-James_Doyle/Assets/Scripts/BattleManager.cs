@@ -39,6 +39,10 @@ public class BattleManager : MonoBehaviour
     public GameObject magicMenu;
     public BattleMagicSelect[] magicButtons;
 
+    public BattleNotification battleNotice;
+
+    public int chanceToFlee = 35;
+
     void Start()
     {
         instance = this;
@@ -151,6 +155,18 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public void BattleEnd()
+    {
+        //turn off everything and reset music to area music
+        activeBattle = false;
+        battleScene.SetActive(false);
+        GameManager.instance.battleActive = false;
+        GameMenu.instance.battleActive = false;
+
+        //AudioManager.instance.PlayBGM();
+
+    }
+
     public void NextTurn()
     {
         currentTurn++;
@@ -209,10 +225,8 @@ public class BattleManager : MonoBehaviour
                 //lose
             }
 
-            //set everything to false
-            battleScene.SetActive(false);
-            GameManager.instance.battleActive = false;
-            activeBattle = false;
+            //end battle
+            BattleEnd();
         }
         else
         {
@@ -407,5 +421,30 @@ public class BattleManager : MonoBehaviour
                 magicButtons[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void Flee()
+    {
+        //random chance to be allowed to flee the battle or not
+        int fleeSuccess = Random.Range(0, 100);
+
+        if (fleeSuccess < chanceToFlee)
+        {
+            //end battle
+            BattleEnd();
+        }
+        else
+        {
+            NextTurn(); //ends char turn
+            battleNotice.theText.text = "Couldn't Flee";
+            battleNotice.Activate();
+        }
+
+
+    }
+
+    public void ItemMenu()
+    {
+            
     }
 }

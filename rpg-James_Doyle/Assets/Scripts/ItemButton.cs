@@ -45,5 +45,14 @@ public class ItemButton : MonoBehaviour
                 Shop.instance.SelectSellItem(GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[buttonValue]));
             }
         }
+
+        if (BattleItems.instance.battleItemMenu.activeInHierarchy)
+        {
+            //handle here what happens if this menu is open
+            if (GameManager.instance.itemsHeld[buttonValue] != "")
+            {
+                BattleItems.instance.SelectItem(GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[buttonValue]));
+            }
+        }
     }
 }
