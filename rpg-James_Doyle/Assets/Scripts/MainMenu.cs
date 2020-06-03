@@ -52,6 +52,11 @@ public class MainMenu : MonoBehaviour
     public void Credits()
     {
         //open credit panel showing the material used to create this game
+        creditPanel.SetActive(true);
+    }
 
+    public void CloseCredits()
+    {
+        creditPanel.SetActive(false);
     }
 }
