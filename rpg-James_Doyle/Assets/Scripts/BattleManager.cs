@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -42,6 +43,11 @@ public class BattleManager : MonoBehaviour
     public BattleNotification battleNotice;
 
     public int chanceToFlee = 35;
+    private bool fleeing;
+
+    public string gameOverScene;
+    public int rewardExp;
+    public string[] rewardItems;
 
     void Start()
     {
@@ -155,18 +161,6 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void BattleEnd()
-    {
-        //turn off everything and reset music to area music
-        activeBattle = false;
-        battleScene.SetActive(false);
-        GameManager.instance.battleActive = false;
-        GameMenu.instance.battleActive = false;
-
-        //AudioManager.instance.PlayBGM();
-
-    }
-
     public void NextTurn()
     {
         currentTurn++;
@@ -231,13 +225,11 @@ public class BattleManager : MonoBehaviour
                 //victory
                 StartCoroutine(EndBattleCo());
             }
-            else
-            { 
-                //lose
+            else if(allPlayersDead)
+            {
+                StartCoroutine(GameOverCo());
             }
 
-            //end battle
-            //BattleEnd();
         }
         else
         {
@@ -436,6 +428,7 @@ public class BattleManager : MonoBehaviour
 
     public void Flee()
     {
+        fleeing = true;
         //random chance to be allowed to flee the battle or not
         int fleeSuccess = Random.Range(0, 100);
 
@@ -491,8 +484,37 @@ public class BattleManager : MonoBehaviour
         activeBattleChar.Clear();
         currentTurn = 0;
 
-        GameManager.instance.battleActive = false;
+
+        if (fleeing)
+        {
+            GameManager.instance.battleActive = false;
+            fleeing = false;
+        }
+        else
+        {
+            //open reward screen
+            BattleReward.instance.OpenRewardScreen(rewardExp, rewardItems);
+        }
+
         //reset music
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);
+    }
+
+    public IEnumerator GameOverCo()
+    {
+        activeBattle = false;
+        uiButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        magicMenu.SetActive(false);
+
+        UIFade.instance.FadeToBlack();
+        yield return new WaitForSeconds(1.5f);
+
+        battleScene.SetActive(false);
+
+        yield return new WaitForSeconds(.5f);
+
+        //load into the game over screen
+        SceneManager.LoadScene(gameOverScene);
     }
 }
