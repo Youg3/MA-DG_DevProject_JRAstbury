@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public string newGameScene;
 
     public GameObject continueButton;
+    public GameObject creditPanel;
 
     public string loadGameScene;
 
@@ -46,5 +47,11 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(4);
         Application.Quit();//unity instructions to close game.  cannot test this until build
+    }
+
+    public void Credits()
+    {
+        //open credit panel showing the material used to create this game
+
     }
 }

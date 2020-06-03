@@ -44,6 +44,7 @@ public class BattleManager : MonoBehaviour
 
     public int chanceToFlee = 35;
     private bool fleeing;
+    public bool cannotFlee;
 
     public string gameOverScene;
     public int rewardExp;
@@ -60,7 +61,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            BattleStart(new string[]{"Eyeball"});
+            BattleStart(new string[]{"Eyeball"}, false);
         }
 
         //handle what happens for turn
@@ -89,10 +90,11 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    public void BattleStart(string[] enemiesToSpawn)
+    public void BattleStart(string[] enemiesToSpawn, bool setCannotFlee)
     {
         if (!activeBattle)
         {
+            cannotFlee = setCannotFlee;
             activeBattle = true;
 
             GameManager.instance.battleActive = true;
@@ -428,23 +430,30 @@ public class BattleManager : MonoBehaviour
 
     public void Flee()
     {
-        fleeing = true;
-        //random chance to be allowed to flee the battle or not
-        int fleeSuccess = Random.Range(0, 100);
-
-        if (fleeSuccess < chanceToFlee)
+        if (cannotFlee)
         {
-            //end battle
-            StartCoroutine(EndBattleCo());
+            battleNotice.theText.text = "You cannot flee from a Dragon.  It's a Dragon!";
+            battleNotice.Activate();
         }
         else
         {
-            NextTurn(); //ends char turn
-            battleNotice.theText.text = "Couldn't Flee";
-            battleNotice.Activate();
+
+            fleeing = true;
+            //random chance to be allowed to flee the battle or not
+            int fleeSuccess = Random.Range(0, 100);
+
+            if (fleeSuccess < chanceToFlee)
+            {
+                //end battle
+                StartCoroutine(EndBattleCo());
+            }
+            else
+            {
+                NextTurn(); //ends char turn
+                battleNotice.theText.text = "Couldn't Flee";
+                battleNotice.Activate();
+            }
         }
-
-
     }
 
     public IEnumerator EndBattleCo()

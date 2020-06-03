@@ -15,6 +15,10 @@ public class BattleStarter : MonoBehaviour
     private bool inBattleZone;
 
     public bool deactivateAfterStart;
+    public bool cannotFlee;
+
+    public bool shouldCompleteQuest;
+    public string questToComplete;
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +92,7 @@ public class BattleStarter : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         //set the enmies from the potential battles
-        BattleManager.instance.BattleStart(potentialBattles[selectedBattle].enemies);
+        BattleManager.instance.BattleStart(potentialBattles[selectedBattle].enemies, cannotFlee);
         //fade to bg screen
         UIFade.instance.FadeFromBlack();
 
@@ -96,5 +100,9 @@ public class BattleStarter : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        //pas the info on quests over to the reward screen
+        BattleReward.instance.markQuestComplete = shouldCompleteQuest;
+        BattleReward.instance.questToMark = questToComplete;
     }
 }
