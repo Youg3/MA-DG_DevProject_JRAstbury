@@ -54,7 +54,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            BattleStart(new string[]{"Eyeball","Skeleton", "Goblin Raider"});
+            BattleStart(new string[]{"Eyeball"});
         }
 
         //handle what happens for turn
@@ -199,12 +199,22 @@ public class BattleManager : MonoBehaviour
             if (activeBattleChar[i].currentHp == 0)
             {
                 //is the battler dead?
+                if (activeBattleChar[i].isPlayer)
+                {
+                    activeBattleChar[i].theSprite.sprite = activeBattleChar[i].deadSprite;
+                }
+                else
+                {  
+                    //if an enemy and not player
+                    activeBattleChar[i].EnemyFade();
+                }
             }
             else
             {
                 if (activeBattleChar[i].isPlayer)
                 {
                     allPlayersDead = false;
+                    activeBattleChar[i].theSprite.sprite = activeBattleChar[i].aliveSprite; //make sure the right sprite is shown
                 }
                 else
                 {
@@ -219,6 +229,7 @@ public class BattleManager : MonoBehaviour
             if (allEnemiesDead)
             {
                 //victory
+                StartCoroutine(EndBattleCo());
             }
             else
             { 
@@ -226,7 +237,7 @@ public class BattleManager : MonoBehaviour
             }
 
             //end battle
-            BattleEnd();
+            //BattleEnd();
         }
         else
         {
@@ -378,7 +389,7 @@ public class BattleManager : MonoBehaviour
 
         for (int i = 0; i < targetButtons.Length; i++)
         {
-            if (enemies.Count > i)
+            if (enemies.Count > i && activeBattleChar[enemies[i]].currentHp > 0)
             {
                 targetButtons[i].gameObject.SetActive(true);
 
@@ -431,7 +442,7 @@ public class BattleManager : MonoBehaviour
         if (fleeSuccess < chanceToFlee)
         {
             //end battle
-            BattleEnd();
+            StartCoroutine(EndBattleCo());
         }
         else
         {
@@ -443,8 +454,45 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    public void ItemMenu()
+    public IEnumerator EndBattleCo()
     {
-            
+        activeBattle = false;
+        uiButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        magicMenu.SetActive(false);
+        
+        GameMenu.instance.battleActive = false; //item menu during battle
+         
+        yield return new WaitForSeconds(.5f);
+        UIFade.instance.FadeToBlack();
+        yield return new WaitForSeconds(1.5f);
+        
+        //battle ended, now send char stats back to game manager for continued use
+        for (int i = 0; i < activeBattleChar.Count; i++)
+        {
+            if (activeBattleChar[i].isPlayer)
+            {
+                for (int j = 0; j < GameManager.instance.playerStats.Length; j++)
+                {
+                    if (activeBattleChar[i].charName == GameManager.instance.playerStats[j].charName)
+                    {
+                        GameManager.instance.playerStats[j].currentHP = activeBattleChar[i].currentHp;
+                        GameManager.instance.playerStats[j].currentMP = activeBattleChar[i].currentMp;
+                    }
+                }
+            }
+
+            //clear battle chars
+            Destroy(activeBattleChar[i].gameObject);
+        }
+        battleScene.SetActive(false);
+        UIFade.instance.FadeFromBlack();
+        //reset battle stuff
+        activeBattleChar.Clear();
+        currentTurn = 0;
+
+        GameManager.instance.battleActive = false;
+        //reset music
+        AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);
     }
 }
