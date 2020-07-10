@@ -44,6 +44,15 @@ TagManager:
   - name: Background
     uniqueID: 938919301
     locked: 0
+  - name: buildings
+    uniqueID: 1043761085
+    locked: 0
+  - name: deco
+    uniqueID: 4065093653
+    locked: 0
+  - name: detail deco
+    uniqueID: 1140515051
+    locked: 0
   - name: Items
     uniqueID: 3301639201
     locked: 0

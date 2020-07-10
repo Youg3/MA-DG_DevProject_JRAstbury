@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa947d8366145f4c934a16d99aabe94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: level_01
+  newGameScene: level_tutorial
   continueButton: {fileID: 2089514507}
   creditPanel: {fileID: 214608820}
   loadGameScene: LoadingScene
