@@ -183,10 +183,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questMarkerNames:
   - Save Them
-  - Quest Test
-  - Talk
-  - do something
+  - t_h-hpPotion
+  - t_h-leatherArmour
+  - t_h-woodenSword
   - load test
+  - Talk
+  - t_h-hP
+  - test1
+  - test2
+  - test3
   questMarkersComplete: 
 --- !u!1 &6693525378372652062
 GameObject:
