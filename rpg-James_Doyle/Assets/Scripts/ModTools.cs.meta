@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a0d5f12e6b132a34294609afb0c31e28
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pauseBetweenTimer: {instanceID: 0}
+  - eyeballMaxHP: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BattleStarter : MonoBehaviour
 {
+    public static BattleStarter instance;
 
     public BattleType[] potentialBattles;
 
     public bool activateOnEnter, activateOnStay, activateOnExit;
 
-    public float pauseBetweenBattles;
+    public float pauseBetweenBattles; //add to this
     private float battleCounterTime;
 
     private bool inBattleZone;
@@ -23,13 +24,25 @@ public class BattleStarter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         //sets the battle counter time
         battleCounterTime = Random.Range(pauseBetweenBattles * .5f, pauseBetweenBattles * 1.5f);
     }
 
+    /*public void ModCheck()
+    {
+        if (ModTools.instance.pauseBetweenBattlesNumber > 0.0f) //if the inputted value is greater than 0.0, plug this in as the pause value.
+        {
+            pauseBetweenBattles = ModTools.instance.pauseBetweenBattlesNumber;
+            Debug.Log("ModCheck - BattleStarter");
+        }
+    }*/
+
     // Update is called once per frame
     void Update()
     {
+        //ModCheck(); //run check to see if there is a modded value already
+
         //check to see if player is in area and can move
         if (inBattleZone && PlayerController.instance.canMove)
         {

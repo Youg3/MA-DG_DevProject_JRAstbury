@@ -9,7 +9,7 @@ public class BattleChar : MonoBehaviour
     public string[] movesAvailable;
 
     public string charName;
-    public int currentHp, maxHp, currentMp, maxMp, strength, defence, wpnPower, armPower;
+    public int currentHp, maxHp, currentMp, maxMp, strength, defence, wpnPower, armPower; //edit these?
 
     public bool hasDied;
 

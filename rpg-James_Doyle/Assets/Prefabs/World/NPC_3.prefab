@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: NPC_3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -96,20 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - n-Girl
-  - Please help me!
-  - n-Player
-  - Is everything okay?
-  - n-Girl
-  - No!
-  - My family was kidnapped by a dragon
-  - n-Player
-  - Don't worry
-  - I'll save them
+  - n-NPC
   isNPC: 1
-  shouldActivateQuest: 1
-  questToMark: Talk
-  markComplete: 1
+  shouldActivateQuest: 0
+  questToMark: 
+  markComplete: 0
 --- !u!61 &675223525351361812
 BoxCollider2D:
   m_ObjectHideFlags: 0

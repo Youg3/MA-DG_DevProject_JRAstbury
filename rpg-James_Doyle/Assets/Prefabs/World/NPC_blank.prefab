@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 675223525351361812}
   - component: {fileID: 675223525351361811}
   m_Layer: 0
-  m_Name: NPC_1
+  m_Name: NPC_blank
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -71,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1690997423
   m_SortingLayer: 6
   m_SortingOrder: -1
-  m_Sprite: {fileID: 6610015202153852503, guid: fb8cc55af4b7a034584793949fd90500,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80,7 +79,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &675223525351361813
@@ -96,20 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - n-Girl
-  - Please help me!
-  - n-Player
-  - Is everything okay?
-  - n-Girl
-  - No!
-  - My family was kidnapped by a dragon
-  - n-Player
-  - Don't worry
-  - I'll save them
+  - n-NPC
   isNPC: 1
-  shouldActivateQuest: 1
-  questToMark: Talk
-  markComplete: 1
+  shouldActivateQuest: 0
+  questToMark: 
+  markComplete: 0
 --- !u!61 &675223525351361812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +117,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1}
+    oldSize: {x: 0.75, y: 0.9375}
     newSize: {x: 0.75, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -153,7 +143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1}
+    oldSize: {x: 0.75, y: 0.9375}
     newSize: {x: 0.75, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
