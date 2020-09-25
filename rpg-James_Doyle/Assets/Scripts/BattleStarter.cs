@@ -29,20 +29,9 @@ public class BattleStarter : MonoBehaviour
         battleCounterTime = Random.Range(pauseBetweenBattles * .5f, pauseBetweenBattles * 1.5f);
     }
 
-    /*public void ModCheck()
-    {
-        if (ModTools.instance.pauseBetweenBattlesNumber > 0.0f) //if the inputted value is greater than 0.0, plug this in as the pause value.
-        {
-            pauseBetweenBattles = ModTools.instance.pauseBetweenBattlesNumber;
-            Debug.Log("ModCheck - BattleStarter");
-        }
-    }*/
-
     // Update is called once per frame
     void Update()
     {
-        //ModCheck(); //run check to see if there is a modded value already
-
         //check to see if player is in area and can move
         if (inBattleZone && PlayerController.instance.canMove)
         {
