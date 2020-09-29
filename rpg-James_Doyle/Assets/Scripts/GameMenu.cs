@@ -18,8 +18,6 @@ public class GameMenu : MonoBehaviour
     public GameObject modMenu;
     public GameObject[] modWindows;
 
-    [Space(5)]
-
     private CharStats[] playerStats;
 
     public Text[] nameText, hpText, mpText, lvlText, expText;

@@ -97,7 +97,7 @@ MonoBehaviour:
   - Fire
   - Ice
   charName: Eyeball
-  currentHp: 150
+  currentHp: 250
   maxHp: 250
   currentMp: 0
   maxMp: 0
