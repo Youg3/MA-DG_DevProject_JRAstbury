@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro.SpriteAssetUtilities;
 using UnityEngine;
@@ -11,6 +12,13 @@ public class GameMenu : MonoBehaviour
 
     public GameObject theMenu;
     public GameObject[] windows;
+
+    [Space(5)]
+
+    public GameObject modMenu;
+    public GameObject[] modWindows;
+
+    [Space(5)]
 
     private CharStats[] playerStats;
 
@@ -78,10 +86,24 @@ public class GameMenu : MonoBehaviour
                 {
                     theMenu.SetActive(true);
                     UpdateMainStats();
-                    GameManager.instance.gameMenuOpen = true;
+                    GameManager.instance.gameMenuOpen = true; //disable the ability to walk
                 }
 
                 AudioManager.instance.PlaySFX(5);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //Debug.Log(modWindows.Length);
+            if (modMenu.activeInHierarchy)
+            {
+                modMenu.SetActive(false);
+            }
+            else
+            {
+                modMenu.SetActive(true);
+                GameManager.instance.modMenuOpen = true; 
             }
         }
     }
@@ -309,4 +331,21 @@ public class GameMenu : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void ToggleModWindow(int modWindowNumber)
+    {
+        //activate and deactivate the mod control panels
+        for (int i = 0; i < modWindows.Length; i++)
+        {
+            if (i == modWindowNumber)
+            {
+                modWindows[i].SetActive(!modWindows[i].activeInHierarchy);
+                //Debug.Log(modWindowNumber);
+            }
+            else
+            {
+                modWindows[i].SetActive(false);
+            }
+        }
+
+    }
 }
