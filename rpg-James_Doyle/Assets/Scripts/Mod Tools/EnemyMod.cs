@@ -7,10 +7,14 @@ public class EnemyMod : MonoBehaviour
 {
     public static EnemyMod instance;
 
-    public GameObject enemyPrefab;
+    [Header("Panels and Prefabs")]
+    public GameObject[] enemyPrefab;
 
-  
-    public Text charName,
+    public GameObject[] enemyPanels;
+
+    [Header("Text Values")]
+    public Text[] charName;
+    public Text[]
         charHP,
         charMP,
         charStr,
@@ -18,9 +22,11 @@ public class EnemyMod : MonoBehaviour
         wpnPwr,
         armourPwr;
 
-    public Image charImage;
+    public Image[] charImage;
 
-    public InputField newHP, newMP, newStr, newDef, newWpnPwr, newArmPwr;
+    [Header("Input Values")] 
+    public InputField[] newHP;
+    public InputField[] newMP, newStr, newDef, newWpnPwr, newArmPwr;
 
     // Start is called before the first frame update
     void Start()
@@ -29,43 +35,53 @@ public class EnemyMod : MonoBehaviour
         AutoFill(); //fill out stats
     }
 
-    private void AutoFill()
+    public void AutoFill()
     {
-        charName.text = enemyPrefab.GetComponent<BattleChar>().charName;
-        charHP.text = enemyPrefab.GetComponent<BattleChar>().currentHp.ToString();
-        charMP.text = enemyPrefab.GetComponent<BattleChar>().currentMp.ToString();
-        charStr.text = enemyPrefab.GetComponent<BattleChar>().strength.ToString();
-        charDef.text = enemyPrefab.GetComponent<BattleChar>().defence.ToString();
-        wpnPwr.text = enemyPrefab.GetComponent<BattleChar>().wpnPower.ToString();
-        armourPwr.text = enemyPrefab.GetComponent<BattleChar>().armPower.ToString();
+        for (int i = 0; i < enemyPrefab.Length; i++)
+        {
+            //int selectedEnemy = SelectChar.instance.selectChar;
 
-        charImage.sprite = enemyPrefab.GetComponent<SpriteRenderer>().sprite;
+            int selectedEnemy = enemyPanels[i].gameObject.GetComponent<SelectChar>().selectChar;
+
+            charName[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().charName;
+            charHP[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().currentHp.ToString();
+            charMP[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().currentMp.ToString();
+            charStr[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().strength.ToString();
+            charDef[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().defence.ToString();
+            wpnPwr[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().wpnPower.ToString();
+            armourPwr[i].text = enemyPrefab[selectedEnemy].GetComponent<BattleChar>().armPower.ToString();
+
+            charImage[i].sprite = enemyPrefab[selectedEnemy].GetComponent<SpriteRenderer>().sprite;
+        }
     }
 
     public void SaveInput()
     {
-        //save button for User inputted values
-        if (!string.IsNullOrEmpty(newHP.text))
+        for (int i = 0; i < enemyPrefab.Length; i++)
         {
-            //handles any potential exceptions from poor user entered values
-            int.TryParse(newHP.text, out enemyPrefab.GetComponent<BattleChar>().currentHp);
+            //save button for User inputted values
+            if (!string.IsNullOrEmpty(newHP[i].text))
+            {
+                //handles any potential exceptions from poor user entered values
+                int.TryParse(newHP[i].text, out enemyPrefab[i].GetComponent<BattleChar>().currentHp);
+            }
+
+            if (!string.IsNullOrEmpty(newMP[i].text))
+                int.TryParse(newMP[i].text, out enemyPrefab[i].GetComponent<BattleChar>().currentMp);
+
+            if (!string.IsNullOrEmpty(newStr[i].text))
+                int.TryParse(newStr[i].text, out enemyPrefab[i].GetComponent<BattleChar>().strength);
+
+            if (!string.IsNullOrEmpty(newDef[i].text))
+                int.TryParse(newDef[i].text, out enemyPrefab[i].GetComponent<BattleChar>().defence);
+
+            if (!string.IsNullOrEmpty(newWpnPwr[i].text))
+                int.TryParse(newWpnPwr[i].text, out enemyPrefab[i].GetComponent<BattleChar>().wpnPower);
+
+            if (!string.IsNullOrEmpty(newArmPwr[i].text))
+                int.TryParse(newArmPwr[i].text, out enemyPrefab[i].GetComponent<BattleChar>().armPower);
+
+            AutoFill();
         }
-
-        if (!string.IsNullOrEmpty(newMP.text))
-            int.TryParse(newMP.text, out enemyPrefab.GetComponent<BattleChar>().currentMp);
-
-        if (!string.IsNullOrEmpty(newStr.text))
-            int.TryParse(newStr.text, out enemyPrefab.GetComponent<BattleChar>().strength);  
-        
-        if (!string.IsNullOrEmpty(newDef.text))
-            int.TryParse(newDef.text, out enemyPrefab.GetComponent<BattleChar>().defence);
-
-        if (!string.IsNullOrEmpty(newWpnPwr.text))
-            int.TryParse(newWpnPwr.text, out enemyPrefab.GetComponent<BattleChar>().wpnPower);
-
-        if (!string.IsNullOrEmpty(newArmPwr.text))
-            int.TryParse(newArmPwr.text, out enemyPrefab.GetComponent<BattleChar>().armPower);
-
-        AutoFill(); //update displayed values
     }
 }
