@@ -31,8 +31,9 @@ public class BattleManager : MonoBehaviour
     public GameObject enemyAttackEffect;
     public DamageNumber theDamageNumber;
 
-    [Header("UI Values")]
-    public Text[] playerName, playerHP, playerMP;
+    [Header("UI Values")] 
+    public Text[] playerName;
+    public Text[] playerHP, playerMP;
 
     public GameObject targetMenu;
     public BattleTargetButton[] targetButtons;

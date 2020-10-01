@@ -9,7 +9,6 @@ public class CharMod : MonoBehaviour
 
     [Header("Panels and Prefabs")]
     public GameObject[] charPrefabs;
-
     public GameObject[] charPanels;
 
     [Header("Text Values")]
