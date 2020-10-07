@@ -107,7 +107,6 @@ public class CharMod : MonoBehaviour
         //enable/disable selected char
         charActivate = charActivate != true;
         Debug.Log(charActivate);
-        //CharImage();
     }
 
     public void CharImage(int selectedChar)
@@ -119,14 +118,19 @@ public class CharMod : MonoBehaviour
             Debug.Log("Yo, false");
             //change char image
             charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(121, 121, 123, 100);
-            //editImage.GetComponent<Image>().color = new Color(123, 123, 255, 100);
         }
         else
         {
             //opposite from above
             charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-            //editImage.GetComponent<Image>().color = new Color(255, 255, 255, 255);
         }
-
     }
+
+    public void BossEnable(GameObject moddableChar)
+    {
+        Debug.Log("Enable Char");
+
+        moddableChar.SetActive(charActivate == true);
+    }
+
 }

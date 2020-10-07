@@ -9,6 +9,7 @@ public class WorldMod : MonoBehaviour
 
 
     public GameObject[] battleZones;
+    public GameObject[] bossEnemies;
 
     [Header("Text Values")] 
     public Text battleTimer;

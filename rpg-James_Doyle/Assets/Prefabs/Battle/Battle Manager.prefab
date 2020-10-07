@@ -12914,6 +12914,7 @@ MonoBehaviour:
   - {fileID: 1457650423277633156, guid: 378e50618409836438a181dbf07b5087, type: 3}
   - {fileID: 2943997478939952915, guid: f08558bf07a289b459ce7dd8fe221b86, type: 3}
   - {fileID: 874076571043909560, guid: fa54d2e298adee044bd0ca4e8bd6bb42, type: 3}
+  - {fileID: 540862367547242375, guid: 2bf3f78471a13f242bf52cf29b314fef, type: 3}
   activeBattleChar: []
   currentTurn: 0
   turnWaiting: 0

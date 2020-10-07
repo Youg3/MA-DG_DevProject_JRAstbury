@@ -97,6 +97,7 @@ public class GameMenu : MonoBehaviour
             if (modMenu.activeInHierarchy)
             {
                 modMenu.SetActive(false);
+                GameManager.instance.modMenuOpen = false;
             }
             else
             {
