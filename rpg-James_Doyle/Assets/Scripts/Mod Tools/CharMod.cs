@@ -27,6 +27,8 @@ public class CharMod : MonoBehaviour
     public InputField[] newHP;
     public InputField[] newMP, newStr, newDef, newWpnPwr, newArmPwr;
 
+    private bool charActivate = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,5 +100,33 @@ public class CharMod : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CharActivate()
+    {
+        //enable/disable selected char
+        charActivate = charActivate != true;
+        Debug.Log(charActivate);
+        //CharImage();
+    }
+
+    public void CharImage(int selectedChar)
+    {
+        Debug.Log("Set Char Image Colour");
+
+        if (charActivate != true)
+        {
+            Debug.Log("Yo, false");
+            //change char image
+            charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(121, 121, 123, 100);
+            //editImage.GetComponent<Image>().color = new Color(123, 123, 255, 100);
+        }
+        else
+        {
+            //opposite from above
+            charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            //editImage.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        }
+
     }
 }
