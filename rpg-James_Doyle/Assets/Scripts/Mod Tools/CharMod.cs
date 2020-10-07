@@ -64,31 +64,39 @@ public class CharMod : MonoBehaviour
 
     public void SaveInput()
     {
-        for (int i = 0; i < charPrefabs.Length; i++)
+        for (int i = 0; i < charPanels.Length; i++)
         {
-            //save button for User inputted values
-            if (!string.IsNullOrEmpty(newHP[i].text))
+            for (int j = 0; j < charPrefabs.Length; j++)
             {
-                //handles any potential exceptions from poor user entered values
-                int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp);
+                int selectedChar = charPanels[i].gameObject.GetComponent<SelectChar>().selectChar;
+
+                if (j == selectedChar)
+                {
+                    //save button for User inputted values
+                    if (!string.IsNullOrEmpty(newHP[i].text))
+                    {
+                        //handles any potential exceptions from poor user entered values
+                        int.TryParse(newHP[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp);
+                    }
+
+                    if (!string.IsNullOrEmpty(newMP[i].text))
+                        int.TryParse(newMP[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp);
+
+                    if (!string.IsNullOrEmpty(newStr[i].text))
+                        int.TryParse(newStr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().strength);
+
+                    if (!string.IsNullOrEmpty(newDef[i].text))
+                        int.TryParse(newDef[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().defence);
+
+                    if (!string.IsNullOrEmpty(newWpnPwr[i].text))
+                        int.TryParse(newWpnPwr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPower);
+
+                    if (!string.IsNullOrEmpty(newArmPwr[i].text))
+                        int.TryParse(newArmPwr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().armPower);
+
+                    AutoFill();
+                }
             }
-
-            if (!string.IsNullOrEmpty(newMP[i].text))
-                int.TryParse(newMP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentMp);
-
-            if (!string.IsNullOrEmpty(newStr[i].text))
-                int.TryParse(newStr[i].text, out charPrefabs[i].GetComponent<BattleChar>().strength);
-
-            if (!string.IsNullOrEmpty(newDef[i].text))
-                int.TryParse(newDef[i].text, out charPrefabs[i].GetComponent<BattleChar>().defence);
-
-            if (!string.IsNullOrEmpty(newWpnPwr[i].text))
-                int.TryParse(newWpnPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().wpnPower);
-
-            if (!string.IsNullOrEmpty(newArmPwr[i].text))
-                int.TryParse(newArmPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().armPower);
-
-            AutoFill();
         }
     }
 }
