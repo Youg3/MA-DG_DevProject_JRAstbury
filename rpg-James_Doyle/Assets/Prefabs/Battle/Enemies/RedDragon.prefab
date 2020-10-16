@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1850716491581889624}
   - component: {fileID: 540862367547242375}
   m_Layer: 0
-  m_Name: Dragon 1
+  m_Name: RedDragon
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   - Fire
   - Plasma
   charName: RedDragon
-  currentHp: 10
+  currentHp: 200
   maxHp: 1000
-  currentMp: 0
+  currentMp: 50
   maxMp: 0
   strength: 45
   defence: 25

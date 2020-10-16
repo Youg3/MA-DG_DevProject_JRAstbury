@@ -212,6 +212,8 @@ public class GameMenu : MonoBehaviour
                           playerStats[selected].currentEXP).ToString();
 
         statusImg.sprite = playerStats[selected].charImage;
+
+        //check for mod page?
     }
 
     public void ShowItems()

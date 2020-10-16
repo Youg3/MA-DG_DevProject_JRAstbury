@@ -49,7 +49,7 @@ MonoBehaviour:
   expToNextLevel: 
   maxLevel: 100
   baseEXP: 1000
-  charImage: {fileID: 7456334905099763947, guid: 3eebea435ec811f4fa63935d83786122,
+  charImage: {fileID: -5725962078152895296, guid: 3eebea435ec811f4fa63935d83786122,
     type: 3}
   currentHP: 1500
   maxHP: 100

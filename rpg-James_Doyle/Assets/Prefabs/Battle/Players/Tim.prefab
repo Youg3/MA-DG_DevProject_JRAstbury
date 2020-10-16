@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 489237878004699533}
   m_Layer: 0
   m_Name: Tim
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1639160855
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7805661433064171900, guid: 3eebea435ec811f4fa63935d83786122,
     type: 3}
@@ -112,3 +112,4 @@ MonoBehaviour:
     type: 3}
   aliveSprite: {fileID: 7805661433064171900, guid: 3eebea435ec811f4fa63935d83786122,
     type: 3}
+  fadeSpeed: 1
