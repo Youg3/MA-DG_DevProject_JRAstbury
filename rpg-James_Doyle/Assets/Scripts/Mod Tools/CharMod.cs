@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,11 +40,11 @@ public class CharMod : MonoBehaviour
 
     public void AutoFill()
     {
-        for (int i = 0; i < charPanels.Length; i++)
+        for (int i = 0; i <= charPanels.Length-1; i++)
         {
             //Debug.Log(i);
 
-            for (int j = 0; j < charPrefabs.Length; j++)
+            for (int j = 0; j <= charPrefabs.Length-1; j++)
             {
                 int selectedChar = charPanels[i].gameObject.GetComponent<SelectChar>().selectChar; //get the assigned char number from the gameobject
                 if (charPanels[i].tag != "Player")
@@ -54,46 +55,32 @@ public class CharMod : MonoBehaviour
                         charName[i].text = enemyPrefabs.charName;
                         charHP[i].text = enemyPrefabs.currentHp.ToString();
                         charMP[i].text = enemyPrefabs.currentMp.ToString();
-
+                        charStr[i].text = enemyPrefabs.strength.ToString();
+                        charDef[i].text = enemyPrefabs.defence.ToString();
+                        wpnPwr[i].text = enemyPrefabs.wpnPower.ToString();
+                        armourPwr[i].text = enemyPrefabs.armPower.ToString();
 
                         //charName[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().charName;
                         //charHP[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp.ToString();
                         //charMP[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp.ToString();
-                        charStr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().strength.ToString();
-                        charDef[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().defence.ToString();
-                        wpnPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPower.ToString();
-                        armourPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().armPower.ToString();
+                        //charStr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().strength.ToString();
+                        //charDef[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().defence.ToString();
+                        //wpnPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPower.ToString();
+                        //armourPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().armPower.ToString();
 
                         charImage[i].sprite = charPrefabs[selectedChar].GetComponent<SpriteRenderer>().sprite;
                     }
-
                 }
                 else if (charPanels[i].tag == "Player" && charPrefabs[j].tag == "Player")
                 {
-                    //int selectedPlayer = 0;
-                    //PlayerSelection(selectedPlayer);
-                    //charName[i].text = GameManager.instance.playerStats[selectedPlayer].charName;
-                    //Debug.Log(charPrefabs[j] + "/" + charPanels[i]);
-                    //Debug.Log("Panel Active: " + charPanels[i].gameObject.activeInHierarchy);
-
-                    //Debug.Log(selectedChar);
-
                     if (j == selectedChar)
                     {
-//                        foreach (var playerChars in GameManager.instance.playerStats)
-//                        {
-//                            if (charPrefabs[selectedChar].gameObject.GetComponent<BattleChar>().charName == playerChars.charName)
-//                            {
-//                                Debug.Log(playerChars);
-//                            }
-//                        }
-
                         Debug.Log("Selected Char and Panel:" + j + " " + selectedChar);
-                        for(int p = 0; p < GameManager.instance.playerStats.Length; p++)
+                        for(int p = 0; p <= GameManager.instance.playerStats.Length-1; p++)
                         {
                             CharStats playerPrefabs = GameManager.instance.playerStats[p];
 
-                            if (charPrefabs[selectedChar].gameObject.GetComponent<BattleChar>().charName == playerPrefabs.charName)
+                            if (charPrefabs[j].gameObject.GetComponent<BattleChar>().charName == playerPrefabs.charName)
                             {
                                 charName[i].text = playerPrefabs.charName;
                                 charHP[i].text = playerPrefabs.currentHP.ToString();
@@ -110,6 +97,10 @@ public class CharMod : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateChar()
+    {
     }
 
     public void SaveInput()
