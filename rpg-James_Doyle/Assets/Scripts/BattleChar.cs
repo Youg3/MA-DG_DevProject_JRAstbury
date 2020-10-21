@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class BattleChar : MonoBehaviour
+public class BattleChar : GenCharStats
 {
     public bool isPlayer;
 
     public string[] movesAvailable;
 
-    public string charName;
-    public int currentHp, maxHp, currentMp, maxMp, strength, defence, wpnPower, armPower; //edit these?
+    /*public string charName { get; set; }
+    public int currentHp { get; set; }
+    public int maxHp { get; set; }
+    public int currentMp { get; set; }
+    public int maxMp { get; set; }
+    public int strength { get; set; }
+    public int defence { get; set; }
+    public int wpnPwr { get; set; }
+    public int armPwr { get; set; }*/
+
+    //public string charName;
+    //public int currentHp, maxHp, currentMp, maxMp, strength, defence, wpnPwr, armPwr; //edit these?
 
     public bool hasDied;
-
+    
     public SpriteRenderer theSprite;
     public Sprite deadSprite;
     public Sprite aliveSprite;

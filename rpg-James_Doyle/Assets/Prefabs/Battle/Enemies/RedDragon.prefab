@@ -93,20 +93,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1656bb7d69539e14eb342f721c4674f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charName: RedDragon
+  currentHp: 500
+  maxHp: 0
+  currentMp: 0
+  maxMp: 0
+  strength: 0
+  defence: 0
+  wpnPwr: 0
+  armPwr: 0
   isPlayer: 0
   movesAvailable:
   - Slash
   - Fire
   - Plasma
-  charName: RedDragon
-  currentHp: 200
-  maxHp: 1000
-  currentMp: 50
-  maxMp: 0
-  strength: 45
-  defence: 25
-  wpnPower: 30
-  armPower: 30
   hasDied: 0
   theSprite: {fileID: 1850716491581889624}
   deadSprite: {fileID: 0}

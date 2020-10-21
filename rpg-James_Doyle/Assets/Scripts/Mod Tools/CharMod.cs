@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -57,16 +58,8 @@ public class CharMod : MonoBehaviour
                         charMP[i].text = enemyPrefabs.currentMp.ToString();
                         charStr[i].text = enemyPrefabs.strength.ToString();
                         charDef[i].text = enemyPrefabs.defence.ToString();
-                        wpnPwr[i].text = enemyPrefabs.wpnPower.ToString();
-                        armourPwr[i].text = enemyPrefabs.armPower.ToString();
-
-                        //charName[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().charName;
-                        //charHP[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp.ToString();
-                        //charMP[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp.ToString();
-                        //charStr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().strength.ToString();
-                        //charDef[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().defence.ToString();
-                        //wpnPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPower.ToString();
-                        //armourPwr[i].text = charPrefabs[selectedChar].GetComponent<BattleChar>().armPower.ToString();
+                        wpnPwr[i].text = enemyPrefabs.wpnPwr.ToString();
+                        armourPwr[i].text = enemyPrefabs.armPwr.ToString();
 
                         charImage[i].sprite = charPrefabs[selectedChar].GetComponent<SpriteRenderer>().sprite;
                     }
@@ -117,23 +110,25 @@ public class CharMod : MonoBehaviour
                     if (!string.IsNullOrEmpty(newHP[i].text))
                     {
                         //handles any potential exceptions from poor user entered values
-                        int.TryParse(newHP[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp);
+                        //charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp = Convert.ToInt32(newHP[i].text); //uses interface value
+                        int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp); 
+
                     }
 
                     if (!string.IsNullOrEmpty(newMP[i].text))
-                        int.TryParse(newMP[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp);
+                        charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp = Convert.ToInt32(newMP[i].text);
 
                     if (!string.IsNullOrEmpty(newStr[i].text))
-                        int.TryParse(newStr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().strength);
+                        charPrefabs[selectedChar].GetComponent<BattleChar>().strength = Convert.ToInt32(newStr[i].text);
 
                     if (!string.IsNullOrEmpty(newDef[i].text))
-                        int.TryParse(newDef[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().defence);
+                        charPrefabs[selectedChar].GetComponent<BattleChar>().defence = Convert.ToInt32(newDef[i].text);
 
                     if (!string.IsNullOrEmpty(newWpnPwr[i].text))
-                        int.TryParse(newWpnPwr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPower);
+                        charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPwr = Convert.ToInt32(wpnPwr[i].text);
 
                     if (!string.IsNullOrEmpty(newArmPwr[i].text))
-                        int.TryParse(newArmPwr[i].text, out charPrefabs[selectedChar].GetComponent<BattleChar>().armPower);
+                        charPrefabs[selectedChar].GetComponent<BattleChar>().armPwr = Convert.ToInt32(armourPwr[i].text);
 
                     AutoFill();
                 }
@@ -141,10 +136,12 @@ public class CharMod : MonoBehaviour
         }
     }
 
+
+
     public void CharActivate()
     {
         //enable/disable selected char
-        charActivate = charActivate != true;
+        charActivate = charActivate != true; //possibly change this to being a Bool attached to each object individually?
         Debug.Log(charActivate);
     }
 

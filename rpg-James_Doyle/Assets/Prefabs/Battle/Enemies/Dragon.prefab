@@ -98,14 +98,14 @@ MonoBehaviour:
   - Fire
   - Plasma
   charName: Dragon
-  currentHp: 10
-  maxHp: 1000
+  currentHp: 300
+  maxHp: 0
   currentMp: 0
   maxMp: 0
-  strength: 45
-  defence: 25
-  wpnPower: 30
-  armPower: 30
+  strength: 0
+  defence: 0
+  wpnPwr: 0
+  armPwr: 0
   hasDied: 0
   theSprite: {fileID: 1850716491581889624}
   deadSprite: {fileID: 0}

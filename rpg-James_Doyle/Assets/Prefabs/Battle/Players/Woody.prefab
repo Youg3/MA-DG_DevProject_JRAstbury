@@ -97,14 +97,14 @@ MonoBehaviour:
   - Ice
   - Plasma
   charName: Woody
-  currentHp: 0
+  currentHp: 50
   maxHp: 0
   currentMp: 0
   maxMp: 0
   strength: 0
   defence: 0
-  wpnPower: 0
-  armPower: 0
+  wpnPwr: 0
+  armPwr: 0
   hasDied: 0
   theSprite: {fileID: 1846583048638306738}
   deadSprite: {fileID: 21300046, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}

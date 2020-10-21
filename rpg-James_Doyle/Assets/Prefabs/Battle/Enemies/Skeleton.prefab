@@ -67,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1639160855
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300014, guid: 988d560df8d322a468c97243cbfd76e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,14 +97,14 @@ MonoBehaviour:
   - Slash
   - Plasma
   charName: Skeleton
-  currentHp: 70
-  maxHp: 70
+  currentHp: 25
+  maxHp: 0
   currentMp: 0
   maxMp: 0
-  strength: 12
+  strength: 0
   defence: 0
-  wpnPower: 10
-  armPower: 0
+  wpnPwr: 0
+  armPwr: 0
   hasDied: 0
   theSprite: {fileID: 773441918787142098}
   deadSprite: {fileID: 0}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,12 +49,24 @@ public class EnemyMod : MonoBehaviour
             charMP[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().currentMp.ToString();
             charStr[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().strength.ToString();
             charDef[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().defence.ToString();
-            wpnPwr[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().wpnPower.ToString();
-            armourPwr[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().armPower.ToString();
+            wpnPwr[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().wpnPwr.ToString();
+            armourPwr[i].text = charPrefabs[selectedEnemy].GetComponent<BattleChar>().armPwr.ToString();
 
             charImage[i].sprite = charPrefabs[selectedEnemy].GetComponent<SpriteRenderer>().sprite;
         }
     }
+
+//    public void UpdateStats(int panelValue, ICharStats character) //using new interface call...
+//    {
+//        charName[panelValue].text = character.charName;
+//        charHP[panelValue].text = character.currentHp.ToString();
+//        charMP[panelValue].text = character.currentMp.ToString();
+//    }
+//
+//    public void SaveStats(int panelValue, ICharStats character)
+//    {
+//        character.currentHp = Convert.ToInt32(charHP[panelValue].text);
+//    }
 
     public void SaveInput()
     {
@@ -63,23 +76,23 @@ public class EnemyMod : MonoBehaviour
             if (!string.IsNullOrEmpty(newHP[i].text))
             {
                 //handles any potential exceptions from poor user entered values
-                int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp);
+                //int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp);
             }
 
             if (!string.IsNullOrEmpty(newMP[i].text))
-                int.TryParse(newMP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentMp);
+                //int.TryParse(newMP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentMp);
 
             if (!string.IsNullOrEmpty(newStr[i].text))
-                int.TryParse(newStr[i].text, out charPrefabs[i].GetComponent<BattleChar>().strength);
+                //int.TryParse(newStr[i].text, out charPrefabs[i].GetComponent<BattleChar>().strength);
 
             if (!string.IsNullOrEmpty(newDef[i].text))
-                int.TryParse(newDef[i].text, out charPrefabs[i].GetComponent<BattleChar>().defence);
+                //int.TryParse(newDef[i].text, out charPrefabs[i].GetComponent<BattleChar>().defence);
 
             if (!string.IsNullOrEmpty(newWpnPwr[i].text))
-                int.TryParse(newWpnPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().wpnPower);
+                //int.TryParse(newWpnPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().wpnPwr);
 
             if (!string.IsNullOrEmpty(newArmPwr[i].text))
-                int.TryParse(newArmPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().armPower);
+                //int.TryParse(newArmPwr[i].text, out charPrefabs[i].GetComponent<BattleChar>().armPwr);
 
             AutoFill();
         }

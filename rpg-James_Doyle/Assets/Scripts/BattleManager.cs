@@ -131,8 +131,8 @@ public class BattleManager : MonoBehaviour
                             activeBattleChar[i].maxMp = thePlayer.maxMP;
                             activeBattleChar[i].strength = thePlayer.strength;
                             activeBattleChar[i].defence = thePlayer.defense;
-                            activeBattleChar[i].wpnPower = thePlayer.weaponPower;
-                            activeBattleChar[i].armPower = thePlayer.armourPower;
+                            activeBattleChar[i].wpnPwr = thePlayer.weaponPower;
+                            activeBattleChar[i].armPwr = thePlayer.armourPower;
 
                         }
                     }
@@ -296,8 +296,8 @@ public class BattleManager : MonoBehaviour
 
     public void DealDamage(int target, int movePower)
     {
-        float attackPwr = activeBattleChar[currentTurn].strength + activeBattleChar[currentTurn].wpnPower; //attacker stat
-        float defPwr = activeBattleChar[target].defence + activeBattleChar[target].armPower; //defender stat
+        float attackPwr = activeBattleChar[currentTurn].strength + activeBattleChar[currentTurn].wpnPwr; //attacker stat
+        float defPwr = activeBattleChar[target].defence + activeBattleChar[target].armPwr; //defender stat
 
         float damageCalc = (attackPwr / defPwr) * movePower * Random.Range(.9f, 1.1f); //actual damage to be dealt to target
 

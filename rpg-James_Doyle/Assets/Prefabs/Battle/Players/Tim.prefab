@@ -93,19 +93,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1656bb7d69539e14eb342f721c4674f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charName: Tim
+  currentHp: 100
+  maxHp: 0
+  currentMp: 0
+  maxMp: 0
+  strength: 50
+  defence: 100
+  wpnPwr: 0
+  armPwr: 0
   isPlayer: 1
   movesAvailable:
   - Fire
   - Ice
-  charName: Tim
-  currentHp: 0
-  maxHp: 0
-  currentMp: 0
-  maxMp: 0
-  strength: 0
-  defence: 0
-  wpnPower: 0
-  armPower: 0
   hasDied: 0
   theSprite: {fileID: 5127261438157303865}
   deadSprite: {fileID: 8888318505984086984, guid: 3eebea435ec811f4fa63935d83786122,
