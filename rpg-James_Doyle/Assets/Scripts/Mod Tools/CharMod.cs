@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,15 +54,10 @@ public class CharMod : MonoBehaviour
                     if (j == selectedChar) //compare selected number with prefab
                     {
                         BattleChar enemyPrefabs = charPrefabs[selectedChar].GetComponent<BattleChar>();
-                        charName[i].text = enemyPrefabs.charName;
-                        charHP[i].text = enemyPrefabs.currentHp.ToString();
-                        charMP[i].text = enemyPrefabs.currentMp.ToString();
-                        charStr[i].text = enemyPrefabs.strength.ToString();
-                        charDef[i].text = enemyPrefabs.defence.ToString();
-                        wpnPwr[i].text = enemyPrefabs.wpnPwr.ToString();
-                        armourPwr[i].text = enemyPrefabs.armPwr.ToString();
+                        //call new update method and fill out panels
+                        UpdateChar(i,enemyPrefabs);
 
-                        charImage[i].sprite = charPrefabs[selectedChar].GetComponent<SpriteRenderer>().sprite;
+                        charImage[i].sprite = charPrefabs[selectedChar].GetComponent<SpriteRenderer>().sprite; //add sprite to GenCharStats Parent Class?
                     }
                 }
                 else if (charPanels[i].tag == "Player" && charPrefabs[j].tag == "Player")
@@ -75,6 +71,9 @@ public class CharMod : MonoBehaviour
 
                             if (charPrefabs[j].gameObject.GetComponent<BattleChar>().charName == playerPrefabs.charName)
                             {
+
+                                //UpdateChar(i,playerPrefabs) //send data to another method
+
                                 charName[i].text = playerPrefabs.charName;
                                 charHP[i].text = playerPrefabs.currentHP.ToString();
                                 charMP[i].text = playerPrefabs.currentMP.ToString();
@@ -92,8 +91,43 @@ public class CharMod : MonoBehaviour
         }
     }
 
-    public void UpdateChar()
+    public void UpdateChar(int panelField, GenCharStats character)
     {
+        charName[panelField].text = character.charName;
+        charHP[panelField].text = character.currentHp.ToString();
+        charMP[panelField].text = character.currentMp.ToString();
+        charStr[panelField].text = character.strength.ToString();
+        charDef[panelField].text = character.defence.ToString();
+        wpnPwr[panelField].text = character.wpnPwr.ToString();
+        armourPwr[panelField].text = character.armPwr.ToString();
+    }
+
+    public void SaveChar(int inputField, GenCharStats character)
+    {
+        if (!string.IsNullOrEmpty(newHP[inputField].text))
+        {
+            int.TryParse(newHP[inputField].text, out character.currentHp);
+        }
+        if (!string.IsNullOrEmpty(newMP[inputField].text))
+        {
+            int.TryParse(newMP[inputField].text, out character.currentMp);
+        }
+        if (!string.IsNullOrEmpty(newStr[inputField].text))
+        {
+            int.TryParse(newStr[inputField].text, out character.strength);
+        }
+        if(!string.IsNullOrEmpty(newDef[inputField].text))
+        {
+            int.TryParse(newDef[inputField].text, out character.defence);
+        }
+        if (!string.IsNullOrEmpty(newWpnPwr[inputField].text))
+        {
+            int.TryParse(newWpnPwr[inputField].text, out character.wpnPwr);
+        }
+        if (!string.IsNullOrEmpty(newArmPwr[inputField].text))
+        {
+            int.TryParse(newArmPwr[inputField].text, out character.armPwr);
+        }
     }
 
     public void SaveInput()
@@ -103,40 +137,24 @@ public class CharMod : MonoBehaviour
             for (int j = 0; j < charPrefabs.Length; j++)
             {
                 int selectedChar = charPanels[i].gameObject.GetComponent<SelectChar>().selectChar;
-
-                if (j == selectedChar)
+                if (charPanels[i].tag != "Player") 
                 {
-                    //save button for User inputted values
-                    if (!string.IsNullOrEmpty(newHP[i].text))
+                    if (j == selectedChar)
                     {
-                        //handles any potential exceptions from poor user entered values
-                        //charPrefabs[selectedChar].GetComponent<BattleChar>().currentHp = Convert.ToInt32(newHP[i].text); //uses interface value
-                        int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp); 
+                        BattleChar enemyPrefabs = charPrefabs[selectedChar].GetComponent<BattleChar>();
+                        //send to save char method
+                        SaveChar(i, enemyPrefabs);
 
+                        AutoFill();
                     }
-
-                    if (!string.IsNullOrEmpty(newMP[i].text))
-                        charPrefabs[selectedChar].GetComponent<BattleChar>().currentMp = Convert.ToInt32(newMP[i].text);
-
-                    if (!string.IsNullOrEmpty(newStr[i].text))
-                        charPrefabs[selectedChar].GetComponent<BattleChar>().strength = Convert.ToInt32(newStr[i].text);
-
-                    if (!string.IsNullOrEmpty(newDef[i].text))
-                        charPrefabs[selectedChar].GetComponent<BattleChar>().defence = Convert.ToInt32(newDef[i].text);
-
-                    if (!string.IsNullOrEmpty(newWpnPwr[i].text))
-                        charPrefabs[selectedChar].GetComponent<BattleChar>().wpnPwr = Convert.ToInt32(wpnPwr[i].text);
-
-                    if (!string.IsNullOrEmpty(newArmPwr[i].text))
-                        charPrefabs[selectedChar].GetComponent<BattleChar>().armPwr = Convert.ToInt32(armourPwr[i].text);
-
-                    AutoFill();
+                }else if (charPanels[i].tag == "Player" && charPrefabs[j].tag == "Player")
+                {
+                    Debug.Log("Nothing Saved - PC");
+                    //TDB
                 }
             }
         }
     }
-
-
 
     public void CharActivate()
     {

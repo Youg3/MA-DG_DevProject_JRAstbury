@@ -77,6 +77,9 @@ public class EnemyMod : MonoBehaviour
             {
                 //handles any potential exceptions from poor user entered values
                 //int.TryParse(newHP[i].text, out charPrefabs[i].GetComponent<BattleChar>().currentHp);
+                
+                charPrefabs.SetValue(charHP, Convert.ToInt32(newHP[i].text));
+
             }
 
             if (!string.IsNullOrEmpty(newMP[i].text))

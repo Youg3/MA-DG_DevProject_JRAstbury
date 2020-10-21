@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 32767214}
   - component: {fileID: 32767213}
   m_Layer: 5
-  m_Name: NewWpn (P1)
+  m_Name: NewWpn (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1223,36 +1223,54 @@ MonoBehaviour:
   - {fileID: 1744471900}
   - {fileID: 559829519}
   - {fileID: 605744251}
+  - {fileID: 1010314588}
+  - {fileID: 146298461}
+  - {fileID: 41165710}
   newMP:
   - {fileID: 1415784131}
   - {fileID: 1353725522}
   - {fileID: 620776345}
   - {fileID: 1245287606}
   - {fileID: 1602048330}
+  - {fileID: 1992467007}
+  - {fileID: 97977572}
+  - {fileID: 1788370527}
   newStr:
   - {fileID: 1435768947}
   - {fileID: 1265435223}
   - {fileID: 1460927337}
   - {fileID: 20927759}
   - {fileID: 174673791}
+  - {fileID: 1536582925}
+  - {fileID: 1244669580}
+  - {fileID: 1429313696}
   newDef:
   - {fileID: 1814237545}
   - {fileID: 1821681773}
   - {fileID: 2143122130}
   - {fileID: 1540936065}
   - {fileID: 779777790}
+  - {fileID: 1614912210}
+  - {fileID: 1551896700}
+  - {fileID: 1406158957}
   newWpnPwr:
   - {fileID: 1245060061}
   - {fileID: 19277293}
   - {fileID: 995779612}
   - {fileID: 987297678}
   - {fileID: 2102494619}
+  - {fileID: 162106932}
+  - {fileID: 1627281809}
+  - {fileID: 32767213}
   newArmPwr:
   - {fileID: 590410372}
   - {fileID: 1874761813}
   - {fileID: 1659221751}
   - {fileID: 1871633776}
   - {fileID: 912426989}
+  - {fileID: 1673621653}
+  - {fileID: 1513563879}
+  - {fileID: 564747090}
 --- !u!114 &36135036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,7 +1305,7 @@ GameObject:
   - component: {fileID: 41165711}
   - component: {fileID: 41165710}
   m_Layer: 5
-  m_Name: NewHP (P1)
+  m_Name: NewHP (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,7 +1881,7 @@ GameObject:
   - component: {fileID: 97977573}
   - component: {fileID: 97977572}
   m_Layer: 5
-  m_Name: NewMP (P1)
+  m_Name: NewMP (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2409,7 +2427,7 @@ GameObject:
   - component: {fileID: 146298462}
   - component: {fileID: 146298461}
   m_Layer: 5
-  m_Name: NewHP (P1)
+  m_Name: NewHP (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7529,7 +7547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &487810286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11063,7 +11081,7 @@ GameObject:
   - component: {fileID: 564747091}
   - component: {fileID: 564747090}
   m_Layer: 5
-  m_Name: NewArm (P1)
+  m_Name: NewArm (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20944,7 +20962,7 @@ GameObject:
   - component: {fileID: 1244669581}
   - component: {fileID: 1244669580}
   m_Layer: 5
-  m_Name: NewStr (P1)
+  m_Name: NewStr (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23518,7 +23536,7 @@ GameObject:
   - component: {fileID: 1406158958}
   - component: {fileID: 1406158957}
   m_Layer: 5
-  m_Name: NewDef (P1)
+  m_Name: NewDef (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24180,7 +24198,7 @@ GameObject:
   - component: {fileID: 1429313697}
   - component: {fileID: 1429313696}
   m_Layer: 5
-  m_Name: NewStr (P1)
+  m_Name: NewStr (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26573,7 +26591,7 @@ GameObject:
   - component: {fileID: 1513563880}
   - component: {fileID: 1513563879}
   m_Layer: 5
-  m_Name: NewArm (P1)
+  m_Name: NewArm (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27567,7 +27585,7 @@ GameObject:
   - component: {fileID: 1551896701}
   - component: {fileID: 1551896700}
   m_Layer: 5
-  m_Name: NewDef (P1)
+  m_Name: NewDef (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49586,7 +49604,7 @@ GameObject:
   - component: {fileID: 1627281810}
   - component: {fileID: 1627281809}
   m_Layer: 5
-  m_Name: NewWpn (P1)
+  m_Name: NewWpn (P2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51694,7 +51712,7 @@ GameObject:
   - component: {fileID: 1788370528}
   - component: {fileID: 1788370527}
   m_Layer: 5
-  m_Name: NewMP (P1)
+  m_Name: NewMP (P3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
