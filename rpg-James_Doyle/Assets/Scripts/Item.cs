@@ -45,21 +45,21 @@ public class Item : MonoBehaviour
         {
             if (effectHP) //use of potion, add amount to change to Char
             {
-                selectedChar.currentHP += amountToChange;
+                selectedChar.currentHp += amountToChange;
 
-                if (selectedChar.currentHP > selectedChar.maxHP)
+                if (selectedChar.currentHp > selectedChar.maxHp)
                 {
-                    selectedChar.currentHP = selectedChar.maxHP;
+                    selectedChar.currentHp = selectedChar.maxHp;
                 }
             }
 
             if (effectMP)
             {
-                selectedChar.currentMP += amountToChange;
+                selectedChar.currentMp += amountToChange;
 
-                if (selectedChar.currentMP > selectedChar.maxMP)
+                if (selectedChar.currentMp > selectedChar.maxMp)
                 {
-                    selectedChar.currentMP = selectedChar.maxMP;
+                    selectedChar.currentMp = selectedChar.maxMp;
                 }
             }
 
@@ -80,7 +80,7 @@ public class Item : MonoBehaviour
 
             //set new item to the char
             selectedChar.weaponName = itemName;
-            selectedChar.weaponPower = weaponStr;
+            selectedChar.wpnPwr = weaponStr;
         }
 
         if (isArmour)
@@ -93,7 +93,7 @@ public class Item : MonoBehaviour
 
             //set new item to the char
             selectedChar.armourName = itemName;
-            selectedChar.armourPower = armourStr;
+            selectedChar.armPwr = armourStr;
         }
 
         GameManager.instance.RemoveItem(itemName); //remove from inventory

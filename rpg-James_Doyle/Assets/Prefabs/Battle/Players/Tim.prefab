@@ -98,10 +98,11 @@ MonoBehaviour:
   maxHp: 0
   currentMp: 0
   maxMp: 0
-  strength: 50
-  defence: 100
+  strength: 0
+  defence: 0
   wpnPwr: 0
   armPwr: 0
+  isActive: 0
   isPlayer: 1
   movesAvailable:
   - Fire

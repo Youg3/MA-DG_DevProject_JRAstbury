@@ -35,4 +35,11 @@ public class WorldMod : MonoBehaviour
         battleTimer.text = battleZones[0].GetComponent<BattleStarter>().pauseBetweenBattles.ToString();
 
     }
+
+
+    public void OverworldObjects()
+    {
+        //activate/deactivate certain overworld objs.
+    }
+
 }

@@ -14,6 +14,6 @@ public abstract class GenCharStats : MonoBehaviour
     public int wpnPwr;
     public int armPwr;
 
-    public bool isActive;
+    public bool isActive; //kinda useless, yes?
 
 }

@@ -205,15 +205,15 @@ public class GameManager : MonoBehaviour
             }
 
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Level", playerStats[i].playerLevel); //saves char level
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_currentHP", playerStats[i].currentHP); //saves char current HP
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_maxHP", playerStats[i].maxHP); //saves char current HP
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_currentMP", playerStats[i].currentMP); //saves char current MP
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_maxMP", playerStats[i].maxMP); //saves char current MP
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_currentHP", playerStats[i].currentHp); //saves char current HP
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_maxHP", playerStats[i].maxHp); //saves char current HP
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_currentMP", playerStats[i].currentMp); //saves char current MP
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_maxMP", playerStats[i].maxMp); //saves char current MP
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_currentEXP", playerStats[i].currentEXP); //saves char current EXP
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Strength", playerStats[i].strength); //saves char current STR
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Defense", playerStats[i].defense); //saves char current DEF
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_WpnPwr", playerStats[i].weaponPower); //saves char current Weapon Power
-            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_ArmPwr", playerStats[i].armourPower); //saves char current Armour Power
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Defense", playerStats[i].defence); //saves char current DEF
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_WpnPwr", playerStats[i].wpnPwr); //saves char current Weapon Power
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_ArmPwr", playerStats[i].armPwr); //saves char current Armour Power
             PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_Weapon", playerStats[i].weaponName); //saves char current Equipped Weapon
             PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_Armour", playerStats[i].armourName); //saves char current Equipped Armour
             
@@ -250,15 +250,15 @@ public class GameManager : MonoBehaviour
             }
 
             playerStats[i].playerLevel = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Level"); //get char level
-            playerStats[i].currentHP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_currentHP"); //saves char current HP
-            playerStats[i].maxHP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_maxHP"); //saves char current HP
-            playerStats[i].currentMP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_currentMP"); //saves char current MP
-            playerStats[i].maxMP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_maxMP"); //saves char current MP
+            playerStats[i].currentHp = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_currentHP"); //saves char current HP
+            playerStats[i].maxHp = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_maxHP"); //saves char current HP
+            playerStats[i].currentMp = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_currentMP"); //saves char current MP
+            playerStats[i].maxMp = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_maxMP"); //saves char current MP
             playerStats[i].currentEXP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_currentEXP"); //saves char current EXP
             playerStats[i].strength = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Strength"); //saves char current STR
-            playerStats[i].defense = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Defense"); //saves char current DEF
-            playerStats[i].weaponPower = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_WpnPwr"); //saves char current Weapon Power
-            playerStats[i].armourPower = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_ArmPwr"); //saves char current Armour Power
+            playerStats[i].defence = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Defense"); //saves char current DEF
+            playerStats[i].wpnPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_WpnPwr"); //saves char current Weapon Power
+            playerStats[i].armPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_ArmPwr"); //saves char current Armour Power
             playerStats[i].weaponName = PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_Weapon"); //saves char current Equipped Weapon
             playerStats[i].armourName = PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_Armour"); //saves char current Equipped Armour
         }

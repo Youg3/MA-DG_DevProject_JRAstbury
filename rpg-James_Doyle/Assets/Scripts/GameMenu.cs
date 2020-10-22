@@ -122,8 +122,8 @@ public class GameMenu : MonoBehaviour
 
                 //update char stats
                 nameText[i].text = playerStats[i].charName;
-                hpText[i].text = "HP: " + playerStats[i].currentHP + "/" + playerStats[i].maxHP;
-                mpText[i].text = "MP: " + playerStats[i].currentMP + "/" + playerStats[i].maxMP;
+                hpText[i].text = "HP: " + playerStats[i].currentHp + "/" + playerStats[i].maxHp;
+                mpText[i].text = "MP: " + playerStats[i].currentMp + "/" + playerStats[i].maxMp;
                 lvlText[i].text = "Lvl: " + playerStats[i].playerLevel;
                 expText[i].text = "" + playerStats[i].currentEXP + "/" + playerStats[i].expToNextLevel[playerStats[i].playerLevel];
                 expSlider[i].maxValue = playerStats[i].expToNextLevel[playerStats[i].playerLevel];
@@ -192,24 +192,24 @@ public class GameMenu : MonoBehaviour
     {
         //loading in all the player stats
         statusName.text = playerStats[selected].charName;
-        statusHP.text = "" + playerStats[selected].currentHP + "/" + playerStats[selected].maxHP;
-        statusMP.text = "" + playerStats[selected].currentMP + "/" + playerStats[selected].maxMP;
+        statusHP.text = "" + playerStats[selected].currentHp + "/" + playerStats[selected].maxHp;
+        statusMP.text = "" + playerStats[selected].currentMp + "/" + playerStats[selected].maxMp;
         statusStr.text = playerStats[selected].strength.ToString();
-        statusDef.text = playerStats[selected].defense.ToString();
+        statusDef.text = playerStats[selected].defence.ToString();
 
         if (playerStats[selected].weaponName != "")
         {
             statusWeaponEq.text = playerStats[selected].weaponName;
         }
 
-        statusWpnPwr.text = playerStats[selected].weaponPower.ToString();
+        statusWpnPwr.text = playerStats[selected].wpnPwr.ToString();
 
         if (playerStats[selected].armourName != "")
         {
             statusArmrEq.text = playerStats[selected].armourName;
         }
 
-        statusArmrPwr.text = playerStats[selected].armourPower.ToString();
+        statusArmrPwr.text = playerStats[selected].armPwr.ToString();
 
         statusExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] -
                           playerStats[selected].currentEXP).ToString();

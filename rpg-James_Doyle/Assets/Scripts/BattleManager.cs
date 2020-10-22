@@ -88,7 +88,6 @@ public class BattleManager : MonoBehaviour
         {
             NextTurn();
         }
-
     }
 
     public void BattleStart(string[] enemiesToSpawn, bool setCannotFlee)
@@ -107,7 +106,7 @@ public class BattleManager : MonoBehaviour
             AudioManager.instance.PlayBGM(0);
 
             //player appearing
-            for (int i = 0; i < playerPos.Length; i++)
+            for (int i = 0; i <= playerPos.Length-1; i++)
             {
                 if (GameManager.instance.playerStats[i].gameObject.activeInHierarchy) //check to see if the player char selected is active (Tim at first position is active)
                 {
@@ -125,21 +124,21 @@ public class BattleManager : MonoBehaviour
 
                             //set player stats on active players
                             CharStats thePlayer = GameManager.instance.playerStats[i]; //quick store stat info
-                            activeBattleChar[i].currentHp = thePlayer.currentHP;
-                            activeBattleChar[i].maxHp = thePlayer.maxHP;
-                            activeBattleChar[i].currentMp = thePlayer.currentMP;
-                            activeBattleChar[i].maxMp = thePlayer.maxMP;
+                            activeBattleChar[i].currentHp = thePlayer.currentHp;
+                            activeBattleChar[i].maxHp = thePlayer.maxHp;
+                            activeBattleChar[i].currentMp = thePlayer.currentMp;
+                            activeBattleChar[i].maxMp = thePlayer.maxMp;
                             activeBattleChar[i].strength = thePlayer.strength;
-                            activeBattleChar[i].defence = thePlayer.defense;
-                            activeBattleChar[i].wpnPwr = thePlayer.weaponPower;
-                            activeBattleChar[i].armPwr = thePlayer.armourPower;
+                            activeBattleChar[i].defence = thePlayer.defence;
+                            activeBattleChar[i].wpnPwr = thePlayer.wpnPwr;
+                            activeBattleChar[i].armPwr = thePlayer.armPwr;
 
                         }
                     }
                 }
             }
 
-            for (int i = 0; i < enemiesToSpawn.Length; i++)
+            for (int i = 0; i <= enemiesToSpawn.Length-1; i++)
             {
                 if (enemiesToSpawn[i] != "")
                 {
@@ -272,9 +271,7 @@ public class BattleManager : MonoBehaviour
 
         int selectedTarget = players[Random.Range(0, players.Count)];  //selects a random target
 
-        //activeBattleChar[selectedTarget].currentHp -= 30;
-
-        //chose which move to make
+        //choose which move to make
         int selectAttack = Random.Range(0, activeBattleChar[currentTurn].movesAvailable.Length);
         int movePower = 0;
         for (int i = 0; i < movesList.Length; i++)
@@ -297,11 +294,16 @@ public class BattleManager : MonoBehaviour
     public void DealDamage(int target, int movePower)
     {
         float attackPwr = activeBattleChar[currentTurn].strength + activeBattleChar[currentTurn].wpnPwr; //attacker stat
+
         float defPwr = activeBattleChar[target].defence + activeBattleChar[target].armPwr; //defender stat
+        if (defPwr < 1.0f) //catches if defPwr value below 1 as this causes dmgCalc Infinite value
+        {
+            defPwr = 1.0f;
+        }
 
         float damageCalc = (attackPwr / defPwr) * movePower * Random.Range(.9f, 1.1f); //actual damage to be dealt to target
 
-        int damageToGive = Mathf.RoundToInt(damageCalc);//rounded to int so no decinmals points.
+        int damageToGive = Mathf.RoundToInt(damageCalc);//rounded to int so no decimal point.
         Debug.Log(activeBattleChar[currentTurn].charName + " is dealing " + damageCalc + "(" + damageToGive +
                      ") damage to " + activeBattleChar[target].charName);
 
@@ -311,7 +313,6 @@ public class BattleManager : MonoBehaviour
         Instantiate(theDamageNumber, activeBattleChar[target].transform.position, activeBattleChar[target].transform.rotation).SetDamage(damageToGive);
 
         UpdateUIStats();
-
     }
 
     public void UpdateUIStats()
@@ -347,7 +348,7 @@ public class BattleManager : MonoBehaviour
         //int selectedTarget = 2;
 
         int movePower = 0;
-        for (int i = 0; i < movesList.Length; i++)
+        for (int i = 0; i <= movesList.Length-1; i++)
         {
             if (movesList[i].moveName == moveName)
             {
@@ -403,7 +404,7 @@ public class BattleManager : MonoBehaviour
     {
         magicMenu.SetActive(true);
 
-        for (int i = 0; i < magicButtons.Length; i++)
+        for (int i = 0; i <= magicButtons.Length-1; i++)
         {
             if (activeBattleChar[currentTurn].movesAvailable.Length > i)
             {
@@ -412,7 +413,7 @@ public class BattleManager : MonoBehaviour
                 magicButtons[i].spellName = activeBattleChar[currentTurn].movesAvailable[i]; //sets the name of the spell from the moves available to the current char
                 magicButtons[i].nameText.text = magicButtons[i].spellName; //prints name
 
-                for (int j = 0; j < movesList.Length; j++)
+                for (int j = 0; j <= movesList.Length-1; j++)
                 {
                     if (movesList[j].moveName == magicButtons[i].spellName) //checks that the two arrays are currently positioned at the same data set via it's name
                     {
@@ -479,8 +480,8 @@ public class BattleManager : MonoBehaviour
                 {
                     if (activeBattleChar[i].charName == GameManager.instance.playerStats[j].charName)
                     {
-                        GameManager.instance.playerStats[j].currentHP = activeBattleChar[i].currentHp;
-                        GameManager.instance.playerStats[j].currentMP = activeBattleChar[i].currentMp;
+                        GameManager.instance.playerStats[j].currentHp = activeBattleChar[i].currentHp;
+                        GameManager.instance.playerStats[j].currentMp = activeBattleChar[i].currentMp;
                     }
                 }
             }

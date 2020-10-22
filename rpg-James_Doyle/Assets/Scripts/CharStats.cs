@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 
-public class CharStats : MonoBehaviour
+public class CharStats : GenCharStats
 {
-    public string charName;
+    //public string charName;
     public int playerLevel = 1;
     public int currentEXP;
     //array of how much experience needed to level up
@@ -15,16 +15,16 @@ public class CharStats : MonoBehaviour
 
     [Header("Character Stats")]
     public Sprite charImage;
-    public int currentHP;
-    public int maxHP = 100;
-    public int currentMP;
-    public int maxMP = 30;
+    //public int currentHP;
+    //public int maxHP = 100;
+    //public int currentMP;
+    //public int maxMP = 30;
     public int[] mpLevelBonus;
-    public int strength;
-    public int defense;
+    //public int strength;
+    //public int defense;
     //item stats
-    public int weaponPower;
-    public int armourPower;
+    //public int weaponPower;
+    //public int armourPower;
     public string weaponName;
     public string armourName;
 
@@ -70,15 +70,15 @@ public class CharStats : MonoBehaviour
                 }
                 else
                 {
-                    defense++;
+                    defence++;
                 }
 
                 //increments max hp and full heal
-                maxHP = Mathf.FloorToInt(maxHP * 1.05f);
-                currentHP = maxHP;
+                maxHp = Mathf.FloorToInt(maxHp * 1.05f);
+                currentHp = maxHp;
                 //MP level up
-                maxMP += mpLevelBonus[playerLevel];
-                currentMP = maxMP;
+                maxMp += mpLevelBonus[playerLevel];
+                currentMp = maxMp;
             }
         }
 

@@ -93,11 +93,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charName: Eyeball
-  currentHp: 15
-  maxHp: 0
+  currentHp: 25
+  maxHp: 25
   currentMp: 0
   maxMp: 0
-  strength: 0
+  strength: 10
   defence: 0
   wpnPwr: 0
   armPwr: 0

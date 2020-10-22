@@ -72,15 +72,15 @@ public class CharMod : MonoBehaviour
                             if (charPrefabs[j].gameObject.GetComponent<BattleChar>().charName == playerPrefabs.charName)
                             {
 
-                                //UpdateChar(i,playerPrefabs) //send data to another method
+                                UpdateChar(i, playerPrefabs); //send data to another method
 
-                                charName[i].text = playerPrefabs.charName;
-                                charHP[i].text = playerPrefabs.currentHP.ToString();
-                                charMP[i].text = playerPrefabs.currentMP.ToString();
-                                charStr[i].text = playerPrefabs.strength.ToString();
-                                charDef[i].text = playerPrefabs.defense.ToString();
-                                wpnPwr[i].text = playerPrefabs.weaponPower.ToString();
-                                armourPwr[i].text = playerPrefabs.armourPower.ToString();
+//                                charName[i].text = playerPrefabs.charName;
+//                                charHP[i].text = playerPrefabs.currentHP.ToString();
+//                                charMP[i].text = playerPrefabs.currentMP.ToString();
+//                                charStr[i].text = playerPrefabs.strength.ToString();
+//                                charDef[i].text = playerPrefabs.defense.ToString();
+//                                wpnPwr[i].text = playerPrefabs.weaponPower.ToString();
+//                                armourPwr[i].text = playerPrefabs.armourPower.ToString();
 
                                 charImage[i].sprite = playerPrefabs.charImage;
                             }
@@ -107,10 +107,12 @@ public class CharMod : MonoBehaviour
         if (!string.IsNullOrEmpty(newHP[inputField].text))
         {
             int.TryParse(newHP[inputField].text, out character.currentHp);
+            character.maxHp = character.currentHp; //set max value for new run to currentHP
         }
         if (!string.IsNullOrEmpty(newMP[inputField].text))
         {
             int.TryParse(newMP[inputField].text, out character.currentMp);
+            character.maxMp = character.currentMp;
         }
         if (!string.IsNullOrEmpty(newStr[inputField].text))
         {
@@ -132,37 +134,45 @@ public class CharMod : MonoBehaviour
 
     public void SaveInput()
     {
-        for (int i = 0; i < charPanels.Length; i++)
+        for (int i = 0; i <= charPanels.Length-1; i++)
         {
-            for (int j = 0; j < charPrefabs.Length; j++)
+            for (int j = 0; j <= charPrefabs.Length - 1; j++)
             {
                 int selectedChar = charPanels[i].gameObject.GetComponent<SelectChar>().selectChar;
-                if (charPanels[i].tag != "Player") 
+                if (charPanels[i].tag != "Player")
                 {
                     if (j == selectedChar)
                     {
                         BattleChar enemyPrefabs = charPrefabs[selectedChar].GetComponent<BattleChar>();
                         //send to save char method
                         SaveChar(i, enemyPrefabs);
-
-                        AutoFill();
                     }
-                }else if (charPanels[i].tag == "Player" && charPrefabs[j].tag == "Player")
+                }
+                else if (charPanels[i].tag == "Player" && charPrefabs[j].tag == "Player")
                 {
-                    Debug.Log("Nothing Saved - PC");
-                    //TDB
+                    if (j == selectedChar)
+                    {
+                        for (int p = 0; p <= GameManager.instance.playerStats.Length - 1; p++)
+                        {
+                            CharStats playerPrefabs = GameManager.instance.playerStats[p];
+
+                            if (charPrefabs[j].gameObject.GetComponent<BattleChar>().charName == playerPrefabs.charName)
+                            {
+                                SaveChar(i, playerPrefabs);
+                            }
+                        }
+                    }
                 }
             }
         }
+        //refresh menu
+        AutoFill();
     }
 
     public void CharImage(int selectedChar)
     {
-        Debug.Log("Set Char Image Colour");
-
         if (charActivate != true)
         {
-            Debug.Log("Yo, false");
             //change char image
             charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(121, 121, 123, 100);
         }
@@ -193,6 +203,7 @@ public class CharMod : MonoBehaviour
     {
         //sets player characters to active/deactive
         GameManager.instance.playerStats[playerChar].gameObject.SetActive(!GameManager.instance.playerStats[playerChar].gameObject.activeInHierarchy);
+        charActivate = GameManager.instance.playerStats[playerChar].gameObject.activeInHierarchy;
     }
 
     public void PlayerSelection(int playerChar)
