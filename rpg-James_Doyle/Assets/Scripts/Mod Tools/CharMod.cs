@@ -156,13 +156,6 @@ public class CharMod : MonoBehaviour
         }
     }
 
-    public void CharActivate()
-    {
-        //enable/disable selected char
-        charActivate = charActivate != true; //possibly change this to being a Bool attached to each object individually?
-        Debug.Log(charActivate);
-    }
-
     public void CharImage(int selectedChar)
     {
         Debug.Log("Set Char Image Colour");
@@ -180,11 +173,26 @@ public class CharMod : MonoBehaviour
         }
     }
 
-    public void BossEnable(GameObject moddableChar)
+    // *****************************************     CURRENTLY NOT IN USE!!!   *******************************************************************
+    public void ActivateChar(GameObject character)
     {
-        Debug.Log("Enable Char");
+        //sets bool on individual GameObjects to true/false
+        character.GetComponent<GenCharStats>().isActive = character.GetComponent<GenCharStats>().isActive != true;
+        Debug.Log("SetActive Character");
+        Debug.Log(character.GetComponent<GenCharStats>().isActive);
+    }
+    // ********************************************************************************************************************************************
 
-        moddableChar.SetActive(charActivate == true);
+    public void OverWorldChar(GameObject overworldChar)
+    { 
+        overworldChar.SetActive(!overworldChar.activeInHierarchy);
+        charActivate = overworldChar.activeInHierarchy; //set var to if overworld char is active or not
+    }
+
+    public void PlayerChars(int playerChar)
+    {
+        //sets player characters to active/deactive
+        GameManager.instance.playerStats[playerChar].gameObject.SetActive(!GameManager.instance.playerStats[playerChar].gameObject.activeInHierarchy);
     }
 
     public void PlayerSelection(int playerChar)

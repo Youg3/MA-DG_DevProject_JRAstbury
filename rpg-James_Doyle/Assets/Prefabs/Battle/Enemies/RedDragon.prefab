@@ -102,6 +102,7 @@ MonoBehaviour:
   defence: 0
   wpnPwr: 0
   armPwr: 0
+  isActive: 1
   isPlayer: 0
   movesAvailable:
   - Slash

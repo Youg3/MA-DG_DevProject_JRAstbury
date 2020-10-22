@@ -92,12 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1656bb7d69539e14eb342f721c4674f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
-  movesAvailable:
-  - Ice
-  - Plasma
   charName: Cloaky
-  currentHp: 500
+  currentHp: 0
   maxHp: 0
   currentMp: 0
   maxMp: 0
@@ -105,6 +101,11 @@ MonoBehaviour:
   defence: 0
   wpnPwr: 0
   armPwr: 0
+  isActive: 0
+  isPlayer: 1
+  movesAvailable:
+  - Ice
+  - Plasma
   hasDied: 0
   theSprite: {fileID: 1846583048638306738}
   deadSprite: {fileID: 0}

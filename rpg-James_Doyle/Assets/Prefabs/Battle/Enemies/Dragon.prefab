@@ -92,11 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1656bb7d69539e14eb342f721c4674f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  movesAvailable:
-  - Slash
-  - Fire
-  - Plasma
   charName: Dragon
   currentHp: 300
   maxHp: 0
@@ -106,6 +101,12 @@ MonoBehaviour:
   defence: 0
   wpnPwr: 0
   armPwr: 0
+  isActive: 1
+  isPlayer: 0
+  movesAvailable:
+  - Slash
+  - Fire
+  - Plasma
   hasDied: 0
   theSprite: {fileID: 1850716491581889624}
   deadSprite: {fileID: 0}
