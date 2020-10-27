@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 938919301
     locked: 0
+  - name: track_extra
+    uniqueID: 4159774373
+    locked: 0
   - name: buildings
     uniqueID: 1043761085
     locked: 0
