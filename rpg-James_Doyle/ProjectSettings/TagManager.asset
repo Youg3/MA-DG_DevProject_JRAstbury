@@ -17,7 +17,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -68,4 +68,7 @@ TagManager:
     locked: 0
   - name: Battle Chars
     uniqueID: 1639160855
+    locked: 0
+  - name: minimap
+    uniqueID: 3521463573
     locked: 0
