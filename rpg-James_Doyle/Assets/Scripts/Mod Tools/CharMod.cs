@@ -74,14 +74,6 @@ public class CharMod : MonoBehaviour
 
                                 UpdateChar(i, playerPrefabs); //send data to another method
 
-//                                charName[i].text = playerPrefabs.charName;
-//                                charHP[i].text = playerPrefabs.currentHP.ToString();
-//                                charMP[i].text = playerPrefabs.currentMP.ToString();
-//                                charStr[i].text = playerPrefabs.strength.ToString();
-//                                charDef[i].text = playerPrefabs.defense.ToString();
-//                                wpnPwr[i].text = playerPrefabs.weaponPower.ToString();
-//                                armourPwr[i].text = playerPrefabs.armourPower.ToString();
-
                                 charImage[i].sprite = playerPrefabs.charImage;
                             }
                         }
@@ -182,16 +174,6 @@ public class CharMod : MonoBehaviour
             charImage[selectedChar].gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
     }
-
-    // *****************************************     CURRENTLY NOT IN USE!!!   *******************************************************************
-    public void ActivateChar(GameObject character)
-    {
-        //sets bool on individual GameObjects to true/false
-        character.GetComponent<GenCharStats>().isActive = character.GetComponent<GenCharStats>().isActive != true;
-        Debug.Log("SetActive Character");
-        Debug.Log(character.GetComponent<GenCharStats>().isActive);
-    }
-    // ********************************************************************************************************************************************
 
     public void OverWorldChar(GameObject overworldChar)
     { 

@@ -17,9 +17,6 @@ public class WorldMod : MonoBehaviour
     public Toggle route2;
     public Toggle route3;
 
-    public Toggle[] routeGroups;
-
-    // Start is called before the first frame update
     void Start()
     {
         instance = this;
@@ -31,7 +28,7 @@ public class WorldMod : MonoBehaviour
         route3.onValueChanged.AddListener(delegate { OnToggleChange(4,5); });
     }
 
-    // Update is called once per frame
+    // Update is called once per frame ******************************* can be deleted??!?!
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
