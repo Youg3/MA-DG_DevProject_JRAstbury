@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Tim
   currentHp: 100
-  maxHp: 0
+  maxHp: 100
   currentMp: 0
-  maxMp: 0
+  maxMp: 30
   strength: 35
-  defence: 1
+  defence: 10
   wpnPwr: 0
   armPwr: 0
   isActive: 0
@@ -240,11 +240,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Woody
   currentHp: 250
-  maxHp: 0
+  maxHp: 250
   currentMp: 0
   maxMp: 0
-  strength: 75
-  defence: 1
+  strength: 35
+  defence: 20
   wpnPwr: 0
   armPwr: 0
   isActive: 0
@@ -302,11 +302,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Cloaky
   currentHp: 75
-  maxHp: 0
-  currentMp: 0
-  maxMp: 0
+  maxHp: 75
+  currentMp: 30
+  maxMp: 50
   strength: 22
-  defence: 1
+  defence: 5
   wpnPwr: 0
   armPwr: 0
   isActive: 0
