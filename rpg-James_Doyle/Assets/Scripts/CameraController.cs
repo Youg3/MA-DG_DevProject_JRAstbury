@@ -23,10 +23,6 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        //gets the transform positions of the player
-        //target = PlayerController.instance.transform;
-        //target = FindObjectOfType<PlayerController>().transform; //searches through scene objects for player controller script if it's present
-
         halfHeight = Camera.main.orthographicSize;
         halfWidth = halfHeight * Camera.main.aspect;
 

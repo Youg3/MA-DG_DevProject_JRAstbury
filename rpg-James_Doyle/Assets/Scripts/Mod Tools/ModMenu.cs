@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ModMenu : MonoBehaviour
 {
@@ -10,10 +11,33 @@ public class ModMenu : MonoBehaviour
     public GameObject[] modWindows;
 
 
+    private float waitToLoad;
+
+    [Space(5)]
+    public string mainMenuScene;
+
+    public string firstLevel;
+
+    public GameObject modObjs;
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        DontDestroyOnLoad(gameObject);
+
     }
 
     // Update is called once per frame
@@ -34,6 +58,23 @@ public class ModMenu : MonoBehaviour
                 GameMenu.instance.theMenu.SetActive(false); //prevent the main menu from opening while mod menu is open
             }
         }
+
+/*        if (waitToLoad > 0)
+        {
+            waitToLoad -= Time.deltaTime;
+            if (waitToLoad <= 0)
+            {
+                //main menu
+                Destroy(PlayerController.instance.gameObject);
+                Destroy(GameMenu.instance.gameObject);
+                Destroy(AudioManager.instance.gameObject);
+                Destroy(BattleManager.instance.gameObject);
+
+                SceneManager.LoadScene(firstLevel);
+                UIFade.instance.FadeFromBlack();
+            }
+        }*/
+
     }
     public void ToggleModWindow(int modWindowNumber)
     {
@@ -62,7 +103,37 @@ public class ModMenu : MonoBehaviour
         //call all save methods here?
         CharMod.instance.SaveInput();
         WorldMod.instance.SaveWorldMod();
+        //store scene values here??!?! **************************************************************************************************
 
-        //loading screen + main menu
+        DelayCo();
+
+        modMenu.SetActive(false);
+        GameManager.instance.modMenuOpen = false;
+
+        //set GameObjects to inactive to avoid potential clashes with other scene/s
+        modObjs.gameObject.SetActive(false);
+
+        DelayCo();
+        SceneManager.LoadScene(firstLevel);
+        GameManager.instance.fadingBetweenAreas = false;
+
+    }
+
+    public IEnumerator DelayCo()
+    {
+        yield return new WaitForSeconds(1.5f);
+    }
+
+    public void DestroyInstances()
+    {
+        Destroy(PlayerController.instance.gameObject);
+        //Destroy(GameMenu.instance.gameObject);
+        //Destroy(AudioManager.instance.gameObject);
+        //Destroy(BattleManager.instance.gameObject);
+    }
+
+    public void OpenMenu()
+    {
+        modMenu.SetActive(true);
     }
 }

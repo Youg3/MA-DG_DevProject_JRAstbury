@@ -59,4 +59,9 @@ public class MainMenu : MonoBehaviour
     {
         creditPanel.SetActive(false);
     }
+
+    public void ControlsPanel()
+    {
+        //controlPanel.setActive(!controlPanel.setActive);
+    }
 }

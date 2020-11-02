@@ -12,6 +12,10 @@ public class PlaythroughExit : MonoBehaviour
 
     public GameObject modMenu;
 
+    public void Start()
+    {
+        modMenu = GameObject.FindWithTag("ModMenu");
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,7 +26,7 @@ public class PlaythroughExit : MonoBehaviour
             if (waitToLoad <= 0)
             {
                 shouldLoadAfterFade = false;
-                modMenu.SetActive(true);
+                ModMenu.instance.OpenMenu();
             }
         }
     }
