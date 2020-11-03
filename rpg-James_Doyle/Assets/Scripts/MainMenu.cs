@@ -9,13 +9,14 @@ public class MainMenu : MonoBehaviour
     public string newGameScene;
 
     public GameObject continueButton;
-    public GameObject creditPanel;
+    public GameObject[] panels;
 
     public string loadGameScene;
 
     
     void Start()
     {
+        //possible count how many times here the menu has opened prior to allowing the player to reset the game to default values?
         if (PlayerPrefs.HasKey("Current_Scene_"))
         {
             continueButton.SetActive(true);
@@ -24,11 +25,6 @@ public class MainMenu : MonoBehaviour
         {
             continueButton.SetActive(false);
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     public void Continue()
@@ -49,19 +45,9 @@ public class MainMenu : MonoBehaviour
         Application.Quit();//unity instructions to close game.  cannot test this until build
     }
 
-    public void Credits()
+    public void Panels(int panelNum)
     {
-        //open credit panel showing the material used to create this game
-        creditPanel.SetActive(true);
-    }
-
-    public void CloseCredits()
-    {
-        creditPanel.SetActive(false);
-    }
-
-    public void ControlsPanel()
-    {
-        //controlPanel.setActive(!controlPanel.setActive);
+        //controls activating/deactivating panels for Credits and Controls on main menu screen
+        panels[panelNum].SetActive(!panels[panelNum].activeInHierarchy);
     }
 }
