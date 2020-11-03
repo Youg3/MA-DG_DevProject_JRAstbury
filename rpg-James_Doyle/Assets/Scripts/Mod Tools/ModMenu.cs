@@ -11,8 +11,6 @@ public class ModMenu : MonoBehaviour
     public GameObject[] modWindows;
 
 
-    private float waitToLoad;
-
     [Space(5)]
     public string mainMenuScene;
 
@@ -58,23 +56,6 @@ public class ModMenu : MonoBehaviour
                 GameMenu.instance.theMenu.SetActive(false); //prevent the main menu from opening while mod menu is open
             }
         }
-
-/*        if (waitToLoad > 0)
-        {
-            waitToLoad -= Time.deltaTime;
-            if (waitToLoad <= 0)
-            {
-                //main menu
-                Destroy(PlayerController.instance.gameObject);
-                Destroy(GameMenu.instance.gameObject);
-                Destroy(AudioManager.instance.gameObject);
-                Destroy(BattleManager.instance.gameObject);
-
-                SceneManager.LoadScene(firstLevel);
-                UIFade.instance.FadeFromBlack();
-            }
-        }*/
-
     }
     public void ToggleModWindow(int modWindowNumber)
     {
@@ -107,6 +88,7 @@ public class ModMenu : MonoBehaviour
 
         DelayCo();
 
+        CloseAll();
         modMenu.SetActive(false);
         GameManager.instance.modMenuOpen = false;
 
@@ -135,5 +117,18 @@ public class ModMenu : MonoBehaviour
     public void OpenMenu()
     {
         modMenu.SetActive(true);
+    }
+
+    public void CloseAll()
+    {
+        foreach (var openWindow in modWindows)
+        {
+            openWindow.SetActive(false);
+        }
+
+        foreach (var openPanel in CharMod.instance.playerPanels)
+        {
+            openPanel.SetActive(false);
+        }
     }
 }

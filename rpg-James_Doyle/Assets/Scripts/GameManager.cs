@@ -41,16 +41,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.instance.canMove = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            AddItem("Iron Armour");
-            AddItem("BlahBlah");
-
-            RemoveItem("HP Potion");
-            RemoveItem("Bleep");
-        }
-
+        
         if (Input.GetKeyDown(KeyCode.O)) { SaveData(); }
         if (Input.GetKeyDown(KeyCode.P)) { LoadData(); }
     }

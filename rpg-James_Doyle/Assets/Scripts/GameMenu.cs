@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.SpriteAssetUtilities;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ public class GameMenu : MonoBehaviour
     [Header("Stat Menu")]
     public GameObject[] charStatHolder;
     public GameObject[] statusButtons;
+    public Image[] charSelImages;
 
     public Text statusName,
         statusHP,
@@ -160,12 +162,15 @@ public class GameMenu : MonoBehaviour
 
         StatusChar(0);
 
+        
+
         //update displayed info
 
         for (int i = 0; i < statusButtons.Length; i++)
         {
             statusButtons[i].SetActive(playerStats[i].gameObject.activeInHierarchy);
             statusButtons[i].GetComponentInChildren<Text>().text = playerStats[i].charName;
+            charSelImages[i].sprite = playerStats[i].charImage;
         }
     }
 

@@ -15,11 +15,6 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void PlaySFX(int soundToPlay)
     {
         if (soundToPlay < sfx.Length)

@@ -34436,7 +34436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player 1
+  m_Text: Character 1
 --- !u!222 &783898486
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37537,7 +37537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &899449394
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42287,8 +42287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: 105}
-  m_SizeDelta: {x: 262.5, y: 262.6}
+  m_AnchoredPosition: {x: 124.14998, y: 94.8}
+  m_SizeDelta: {x: 248.3, y: 213.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1206582857
 MonoBehaviour:
@@ -42310,8 +42310,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 7456334905099763947, guid: 3eebea435ec811f4fa63935d83786122,
-    type: 3}
+  m_Sprite: {fileID: 21300012, guid: 988d560df8d322a468c97243cbfd76e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -45813,7 +45812,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player 2
+  m_Text: Character 2
 --- !u!222 &1401887223
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -86054,7 +86053,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player 3
+  m_Text: Character 3
 --- !u!222 &1938021698
 CanvasRenderer:
   m_ObjectHideFlags: 0

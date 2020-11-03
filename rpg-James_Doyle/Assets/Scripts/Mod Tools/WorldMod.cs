@@ -7,7 +7,6 @@ public class WorldMod : MonoBehaviour
 {
     public static WorldMod instance;
 
-
     public GameObject[] battleZones;
     public InputField[] bzTimers;
     public GameObject[] pathBlockers;
@@ -26,16 +25,6 @@ public class WorldMod : MonoBehaviour
         route1.onValueChanged.AddListener(delegate { OnToggleChange(0,1); });
         route2.onValueChanged.AddListener(delegate { OnToggleChange(2,3); });
         route3.onValueChanged.AddListener(delegate { OnToggleChange(4,5); });
-    }
-
-    // Update is called once per frame ******************************* can be deleted??!?!
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SaveWorldMod();
-            FillValues();
-        }
     }
 
     public void FillValues()
@@ -74,12 +63,6 @@ public class WorldMod : MonoBehaviour
     public void SaveBZTimers(int Inputfield, BattleStarter bzNum)
     {
         float.TryParse(bzTimers[Inputfield].text, out bzNum.pauseBetweenBattles); //save entered value
-    }
-
-
-    public void OverworldObjects()
-    {
-        //activate/deactivate certain overworld objs.
     }
 
     public void ExitPath()
