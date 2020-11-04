@@ -44,8 +44,6 @@ public class CharMod : MonoBehaviour
     {
         for (int i = 0; i <= charPanels.Length-1; i++)
         {
-            //Debug.Log(i);
-
             for (int j = 0; j <= charPrefabs.Length-1; j++)
             {
                 int selectedChar = charPanels[i].gameObject.GetComponent<SelectChar>().selectChar; //get the assigned char number from the gameobject
@@ -64,7 +62,7 @@ public class CharMod : MonoBehaviour
                 {
                     if (j == selectedChar)
                     {
-                        Debug.Log("Selected Char and Panel:" + j + " " + selectedChar);
+                        //Debug.Log("Selected Char and Panel:" + j + " " + selectedChar);
                         for(int p = 0; p <= GameManager.instance.playerStats.Length-1; p++)
                         {
                             CharStats playerPrefabs = GameManager.instance.playerStats[p];

@@ -12,12 +12,12 @@ public class SceneLoaded : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Scene Loader Awake");
+        //Debug.Log("Scene Loader Awake");
     }
 
     void OnEnable()
     {
-        Debug.Log("OnEnable Called");
+        //Debug.Log("OnEnable Called");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -25,7 +25,7 @@ public class SceneLoaded : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
+        //Debug.Log(mode);
 
         if (scene.name == modScene)
         {
