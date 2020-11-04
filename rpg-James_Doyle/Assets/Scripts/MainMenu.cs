@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,35 +14,51 @@ public class MainMenu : MonoBehaviour
 
     public string loadGameScene;
 
-    
+    private bool saveFound = false;
+
+
     void Start()
     {
-        //possible count how many times here the menu has opened prior to allowing the player to reset the game to default values?
-        if (PlayerPrefs.HasKey("Current_Scene_"))
+        saveFound = false;
+        ContinueButton();
+    }
+
+    void Update()
+    {
+        //cheat key to enable loading of previous save state.
+        if (Input.GetKeyDown(KeyCode.RightShift) && PlayerPrefs.HasKey("Current_Scene_"))
+        {
+            saveFound = true;
+            ContinueButton();
+        }
+    }
+
+    void ContinueButton()
+    {
+        if (saveFound)
         {
             continueButton.SetActive(true);
         }
-        else
-        {
-            continueButton.SetActive(false);
-        }
+        else { continueButton.SetActive(false);}
+    }
+
+    public void ButtonFx()
+    {
+        AudioManager.instance.PlaySFX(4);
     }
 
     public void Continue()
     {
-        AudioManager.instance.PlaySFX(4);
         SceneManager.LoadScene(loadGameScene);
     }
 
     public void NewGame()
     {
-        AudioManager.instance.PlaySFX(4);
         SceneManager.LoadScene(newGameScene);
     }
 
     public void Exit()
     {
-        AudioManager.instance.PlaySFX(4);
         Application.Quit();//unity instructions to close game.  cannot test this until build
     }
 
