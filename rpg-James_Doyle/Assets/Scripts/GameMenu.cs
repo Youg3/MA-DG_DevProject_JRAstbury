@@ -187,12 +187,20 @@ public class GameMenu : MonoBehaviour
         {
             statusWeaponEq.text = playerStats[selected].weaponName;
         }
+        else
+        {
+            statusWeaponEq.text = "None Equipped";
+        }
 
         statusWpnPwr.text = playerStats[selected].wpnPwr.ToString();
 
         if (playerStats[selected].armourName != "")
         {
             statusArmrEq.text = playerStats[selected].armourName;
+        }
+        else
+        {
+            statusArmrEq.text = "None Equipped";
         }
 
         statusArmrPwr.text = playerStats[selected].armPwr.ToString();
