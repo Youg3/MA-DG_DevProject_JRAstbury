@@ -262,7 +262,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229873643
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -753,7 +753,7 @@ PrefabInstance:
     - target: {fileID: 4126163133860540158, guid: 16ce1cd65be51a542ab1f2dd258e125d,
         type: 3}
       propertyPath: lines.Array.data[5]
-      value: that should help keep me on my feet.
+      value: that should help to keep me on my feet.
       objectReference: {fileID: 0}
     - target: {fileID: 4126163133860540158, guid: 16ce1cd65be51a542ab1f2dd258e125d,
         type: 3}
@@ -3670,7 +3670,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1140515051
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4452,7 +4452,7 @@ Transform:
   - {fileID: 1312462355}
   - {fileID: 354169368}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1430958677
 PrefabInstance:
@@ -4673,7 +4673,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1043761085
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
