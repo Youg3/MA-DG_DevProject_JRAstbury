@@ -31,6 +31,8 @@ public class SceneLoaded : MonoBehaviour
         {
             Debug.Log("scene name");
             ModMenu.instance.modObjs.SetActive(true);
+            //reset house variables in game manager here
+            //QuestManager.instance.questMarkersComplete
         }
 
         //route 1 check

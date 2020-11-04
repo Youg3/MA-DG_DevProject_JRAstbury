@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1690997423
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 7152930139536384079, guid: 3eebea435ec811f4fa63935d83786122,
     type: 3}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theRB: {fileID: 8618505235137870739}
   playerAnim: {fileID: 8618505235137870734}
-  moveSpeed: 10
+  moveSpeed: 6
   areaTransitionName: 
   canMove: 1
 --- !u!95 &8618505235137870734
